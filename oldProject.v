@@ -11,7 +11,7 @@
 `define Arg2    [3:0]
 `define immed 	[7:0]
 `define STATE	[5:0]
-`define REGSIZE [15:0] 
+`define REGSIZE [15:0]
 `define MEMSIZE [65535:0]
 `define HALF_MEMSIZE [32768:0]
 
@@ -61,6 +61,7 @@ input clk, reset, jump_taken;
 input `Register jump_addr;
 output reg `WORD pc_buff, ir;
 output reg jump_flag, jump_type;
+output reg [1:0] o3_flag;
 integer idx;
 
 reg high_or_low_instruction;
@@ -88,13 +89,21 @@ always @(posedge clk) begin
 	ir <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? mainmem[jump_addr/2] `low_instruction : mainmem[jump_addr/2] `high_instruction ) :
                          ( (high_or_low_instruction) ? mainmem[pc/2] `high_instruction : mainmem[pc/2] `high_instruction )       );
 	pc <= ( (jump_taken) ? jump_addr : pc+1 );
-	pc_buff <= pc;	
+	pc_buff <= pc;
   high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
 
    //end
-   //else 
+   //else
 	//halt <= 1;
 
+end
+
+always @(pc) begin
+    // check two instructions
+
+    // if instructions have dependencies, set flag to not allow o-o-o execution
+
+    // else, do not set flag
 end
 
 endmodule
@@ -123,7 +132,7 @@ end
 
 always @(posedge clk) begin
 
-/* Note code that looks like ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] ) is looking to see 
+/* Note code that looks like ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] ) is looking to see
    if what the ALU just sent back to the register file is one of the arguments the next instruction to be sent to the ALU
    needs. Without this check the register file will send the wrong information to the ALU for the next instruction for WAR.
 
@@ -160,47 +169,47 @@ always @(posedge clk) begin
 	        endcase
     `OPstjzsys:
                 case (ir_in `Dest)	      // use Dest as extended opcode
-                    `Destst: begin ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] ); 
+                    `Destst: begin ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 				   ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end // st
-                    `Destjz: begin ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] ); 
+                    `Destjz: begin ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 				   ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end // jz
-                    `Destjnz: begin ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] ); 
+                    `Destjnz: begin ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 				   ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end // jnz
                      //default: begin halt <= 1; end // sys
 	        endcase
-             
-    `OPand: begin D <= ir_in `Dest;   
+
+    `OPand: begin D <= ir_in `Dest;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end
-    `OPor: begin D <= ir_in `Dest;   
+    `OPor: begin D <= ir_in `Dest;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end
-    `OPxor: begin D <= ir_in `Dest;   
+    `OPxor: begin D <= ir_in `Dest;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end
-    `OPadd: begin D <= ir_in `Dest;   
+    `OPadd: begin D <= ir_in `Dest;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end
-    `OPaddv: begin D <= ir_in `Dest;   
+    `OPaddv: begin D <= ir_in `Dest;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end
-    `OPshift: begin D <= ir_in `Dest;  
+    `OPshift: begin D <= ir_in `Dest;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
 		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Arg2)) ? ALU_in : regfile[ir_in `Arg2] ); end
 
-    `OPpack: begin D <= ir_in `Dest; P <= ir_in `Arg2; 
+    `OPpack: begin D <= ir_in `Dest; P <= ir_in `Arg2;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
-		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Dest)) ? ALU_in : regfile[ir_in `Dest] ); end 
-    `OPunpack: begin D <= ir_in `Dest; P <= ir_in `Arg2; 
+		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Dest)) ? ALU_in : regfile[ir_in `Dest] ); end
+    `OPunpack: begin D <= ir_in `Dest; P <= ir_in `Arg2;
 		  ALU_source1 <= ( (write_en && (ALUdest == ir_in `Arg1)) ? ALU_in : regfile[ir_in `Arg1] );
-		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Dest)) ? ALU_in : regfile[ir_in `Dest] ); end 
+		  ALU_source2 <= ( (write_en && (ALUdest == ir_in `Dest)) ? ALU_in : regfile[ir_in `Dest] ); end
 
     `OPli: begin D <= ir_in `Dest; ALU_source1 `immed <= ir_in `immed; end
-    `OPmorei: begin D <= ir_in `Dest; ALU_source1 `immed <= ir_in `immed; 
+    `OPmorei: begin D <= ir_in `Dest; ALU_source1 `immed <= ir_in `immed;
                     ALU_source2 <= ( (write_en && (ALUdest == ir_in `Dest)) ? ALU_in : regfile[ir_in `Dest] ); end
 
    // default: halt <= 1;
-  endcase	
+  endcase
 
  end else begin
 
@@ -240,7 +249,7 @@ end
 
 
 always @(posedge clk) begin
-/* Note code that looks like ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) 
+/* Note code that looks like ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] )
    is checking to see if what the ALU just sent back to the register file is one of the arguments to the instruction
    it is evaluating. If the ALU just sent something to the register file to be stored then it could not possibly have
    sent that information back to the ALU since it hadn't been computed yet. So to get instructions correct the ALU
@@ -252,7 +261,7 @@ always @(posedge clk) begin
     else
 	write_en <= 1;
 
-    
+
     ALUdest_buff <= D;
     ALUdest <= D;
 
@@ -262,12 +271,12 @@ if (jump_taken == 0) begin
                 case (ir_in2 `Arg2)	      // use Arg2 as extended opcode
                     `Arg2ld: begin  //ld
 				   ALUout <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )];
-				   ALUout_buff <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )]; 
-			     end 
+				   ALUout_buff <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )];
+			     end
                     `Arg2any: begin   //any
-				    ALUout <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ); 
+				    ALUout <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 );
 				    ALUout_buff <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 );
-			      end 
+			      end
                     `Arg2anyv: begin   //anyv
 				     ALUout[7:0] <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] );
 				     ALUout[15:8] <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] );
@@ -279,11 +288,11 @@ if (jump_taken == 0) begin
 				     ALUout_buff[15:8] <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] );
 				     ALUout_buff[23:16] <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] );
 				     ALUout_buff[31:24] <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] );
-			       end 
+			       end
                     `Arg2neg: begin   //neg
-				    ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff : -ALU_source1 ); 
+				    ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff : -ALU_source1 );
 				    ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff : -ALU_source1 );
-			      end 
+			      end
                     default: begin  //negv
 				     ALUout[7:0] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff[7:0] : -ALU_source1[7:0] );
 				     ALUout[15:8] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff[15:8] : -ALU_source1[15:8] );
@@ -294,66 +303,66 @@ if (jump_taken == 0) begin
 				     ALUout_buff[15:8] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff[15:8] : -ALU_source1[15:8] );
 				     ALUout_buff[23:16] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff[23:16] : -ALU_source1[23:16] );
 				     ALUout_buff[31:24] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff[31:24] : -ALU_source1[31:24] );
-			       end  
+			       end
 	        endcase
 
 
     `OPstjzsys:
                 case (ir_in2 `Dest)	      // use Dest as extended opcode
                     `Destst: begin datamem[ALU_source2] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ); end // st
-                    `Destjz: begin jump_addr <= ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 ); 
+                    `Destjz: begin jump_addr <= ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 );
 				   jump_taken <= ( (|( (write_en && (ALUdest == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )) ? 0 : 1 ); end // jz
-                    `Destjnz: begin jump_addr <= ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 ); 
+                    `Destjnz: begin jump_addr <= ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 );
 				   jump_taken <= ( (|( (write_en && (ALUdest == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )) ? 1 : 0 ); end // jnz
                      default: begin halt <= 1; end // sys
 	        endcase
 
 
-             
-    `OPand: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) & 
+
+    `OPand: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) &
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 );
-		  ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) & 
+		  ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) &
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 ); end
-    `OPor: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) | 
+    `OPor: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) |
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 );
-		 ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) | 
+		 ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) |
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 ); end
-    `OPxor: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) ^ 
+    `OPxor: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) ^
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 );
-		  ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) ^ 
+		  ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) ^
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 ); end
-    `OPadd: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) + 
+    `OPadd: begin ALUout <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) +
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 );
-		  ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) + 
+		  ALUout_buff <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) +
 			    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 ); end
-    `OPaddv: begin 
-		   ALUout[7:0] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) + 
+    `OPaddv: begin
+		   ALUout[7:0] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) +
 			    	  ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[7:0] : ALU_source2[7:0] );
-		   ALUout[15:8] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] ) + 
+		   ALUout[15:8] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] ) +
 			    	   ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[15:8] : ALU_source2[15:8] );
-		   ALUout[23:16] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] ) + 
+		   ALUout[23:16] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] ) +
 			    	    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[23:16] : ALU_source2[23:16] );
-		   ALUout[31:24] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] ) + 
+		   ALUout[31:24] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] ) +
 			    	    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[31:24] : ALU_source2[31:24] );
 
-		   ALUout_buff[7:0] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) + 
+		   ALUout_buff[7:0] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) +
 			    	  ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[7:0] : ALU_source2[7:0] );
-		   ALUout_buff[15:8] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] ) + 
+		   ALUout_buff[15:8] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] ) +
 			    	   ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[15:8] : ALU_source2[15:8] );
-		   ALUout_buff[23:16] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] ) + 
+		   ALUout_buff[23:16] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] ) +
 			    	    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[23:16] : ALU_source2[23:16] );
-		   ALUout_buff[31:24] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] ) + 
+		   ALUout_buff[31:24] <= ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] ) +
 			    	    ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[31:24] : ALU_source2[31:24] );
 	     end
 
-    `OPshift: begin 
-		    ALUout <= ( ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[31] : ALU_source2[31] ) ? 
+    `OPshift: begin
+		    ALUout <= ( ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[31] : ALU_source2[31] ) ?
 			      (( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31] : ALU_source1[31] ) ?
 			      ( -(( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff : -ALU_source1 ) >> ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? -ALUout_buff : -ALU_source2 ))) :
 			      ( (( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) >> ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? -ALUout_buff : -ALU_source2 ))) ):
 			      (( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) << ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff : ALU_source2 )) );
-		    
-		    ALUout_buff <= ( ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[31] : ALU_source2[31] ) ? 
+
+		    ALUout_buff <= ( ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? ALUout_buff[31] : ALU_source2[31] ) ?
 			      (( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31] : ALU_source1[31] ) ?
 			      ( -(( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? -ALUout_buff : -ALU_source1 ) >> ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? -ALUout_buff : -ALU_source2 ))) :
 			      ( (( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ) >> ( (write_en && (ALUdest_buff == ir_in2 `Arg2)) ? -ALUout_buff : -ALU_source2 ))) ):
@@ -365,27 +374,27 @@ if (jump_taken == 0) begin
 	*/
 
 
-    `OPpack: begin 
-		   ALUout[7:0] <= ( P[0] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+    `OPpack: begin
+		   ALUout[7:0] <= ( P[0] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				  ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[7:0] : ALU_source2[7:0] ) );
-		   ALUout[15:8] <= ( P[1] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout[15:8] <= ( P[1] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				   ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[15:8] : ALU_source2[15:8] ) );
-		   ALUout[23:16] <= ( P[2] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout[23:16] <= ( P[2] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				    ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[23:16] : ALU_source2[23:16] ) );
-		   ALUout[31:24] <= ( P[3] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout[31:24] <= ( P[3] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				    ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[31:24] : ALU_source2[31:24] ) );
 
-		   ALUout_buff[7:0] <= ( P[0] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout_buff[7:0] <= ( P[0] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				  ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[7:0] : ALU_source2[7:0] ) );
-		   ALUout_buff[15:8] <= ( P[1] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout_buff[15:8] <= ( P[1] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				   ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[15:8] : ALU_source2[15:8] ) );
-		   ALUout_buff[23:16] <= ( P[2] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout_buff[23:16] <= ( P[2] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				    ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[23:16] : ALU_source2[23:16] ) );
-		   ALUout_buff[31:24] <= ( P[3] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 
+		   ALUout_buff[31:24] <= ( P[3] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) :
 				    ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[31:24] : ALU_source2[31:24] ) );
-	     end 
+	     end
 
-    `OPunpack: begin 
+    `OPunpack: begin
 		     ALUout <= ( P[0] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 0) +
 				( P[1] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] ) : 0) +
 				( P[2] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] ) : 0) +
@@ -394,21 +403,21 @@ if (jump_taken == 0) begin
 		     ALUout_buff <= ( P[0] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) : 0) +
 				( P[1] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[15:8] : ALU_source1[15:8] ) : 0) +
 				( P[2] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[23:16] : ALU_source1[23:16] ) : 0) +
-				( P[3] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] ) : 0);  
-	       end 
+				( P[3] ? ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[31:24] : ALU_source1[31:24] ) : 0);
+	       end
 
-    `OPli: begin ALUout <= { {24{ALU_source1[7]}}, ALU_source1 `immed }; 
+    `OPli: begin ALUout <= { {24{ALU_source1[7]}}, ALU_source1 `immed };
                  ALUout_buff <= { {24{ALU_source1[7]}}, ALU_source1 `immed }; end
     `OPmorei: begin ALUout <= { ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[23:0] : ALU_source2[23:0] ), (ir_in2 `immed ) };
                     ALUout_buff <= { ( (write_en && (ALUdest_buff == ir_in2 `Dest)) ? ALUout_buff[23:0] : ALU_source2[23:0] ), (ir_in2 `immed ) }; end
 
     //default: halt <= 1;
-  endcase	
+  endcase
 
 
  end else begin
 
-	  write_en <= 0; jump_taken <= 0; 
+	  write_en <= 0; jump_taken <= 0;
 
 	  end
 end
