@@ -72,7 +72,7 @@ reg `DOUBLE mainmem `HALF_MEMSIZE;
 
 always @(reset) begin
   pc = 0;
-  high_or_low_instruction = 0;
+  high_or_low_instruction = 1;
   $readmemh("mainmem_16.vmem",mainmem_16 );
   $readmemh("mainmem.vmem",mainmem    );
 
@@ -85,8 +85,9 @@ end
 always @(posedge clk) begin
 
    //if ( (mainmem[pc] != 16'hffff) && (mainmem[jump_addr] != 16'hfff) ) begin
-	ir <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? mainmem[jump_addr/2] `low_instruction : mainmem[jump_addr/2] `high_instruction ) :
-                         ( (high_or_low_instruction) ? mainmem[pc/2] `high_instruction : mainmem[pc/2] `high_instruction )       );
+  $display("%x %x %x %x %x", jump_addr, jump_taken, high_or_low_instruction, ir, pc);
+	ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0) ? mainmem[jump_addr/2] `low_instruction : mainmem[jump_addr/2] `high_instruction ) :
+                         ( (high_or_low_instruction) ? mainmem[pc/2] `high_instruction : mainmem[pc/2] `low_instruction )       );
 	pc <= ( (jump_taken) ? jump_addr : pc+1 );
 	pc_buff <= pc;	
   high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
@@ -464,7 +465,7 @@ end
 
 always begin
 	#10 clk = ~clk;
-        $display("%d\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h", pc, ir, jump, halt, u0, u1, u2, u3, u4, u5, u6, u7, u8, u9);
+  $display("%d\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h", pc, ir, jump, halt, u0, u1, u2, u3, u4, u5, u6, u7, u8, u9);
 
         if (halt == 1'b1) $finish;
 end
