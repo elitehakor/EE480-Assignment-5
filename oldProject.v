@@ -64,6 +64,7 @@ output reg jump_flag, jump_type;
 integer idx;
 
 reg high_or_low_instruction;
+wire `DOUBLE ir32;
 
 reg `WORD pc;
 reg `WORD mainmem_16 `MEMSIZE;
@@ -79,15 +80,19 @@ always @(reset) begin
   for( idx=0; idx < 65536; idx = idx + 2 ) begin
     mainmem[idx/2] = { mainmem_16[idx], mainmem_16[idx + 1] };
   end
+  
+  //ir32 = mainmem[0];
 end
 
+
+assign ir32 = (jump_taken) ? mainmen[jump_addr/2] : mainmem[pc/2];
 
 always @(posedge clk) begin
 
    //if ( (mainmem[pc] != 16'hffff) && (mainmem[jump_addr] != 16'hfff) ) begin
   $display("%x %x %x %x %x", jump_addr, jump_taken, high_or_low_instruction, ir, pc);
-	ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0) ? mainmem[jump_addr/2] `low_instruction : mainmem[jump_addr/2] `high_instruction ) :
-                         ( (high_or_low_instruction) ? mainmem[pc/2] `high_instruction : mainmem[pc/2] `low_instruction )       );
+	ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0) ? ir32 `low_instruction : ir32 `high_instruction ) :
+                         ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction )       );
 	pc <= ( (jump_taken) ? jump_addr : pc+1 );
 	pc_buff <= pc;	
   high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
@@ -464,8 +469,8 @@ initial begin
 end
 
 always begin
-	#10 clk = ~clk;
   $display("%d\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h\t%h", pc, ir, jump, halt, u0, u1, u2, u3, u4, u5, u6, u7, u8, u9);
+	#10 clk = ~clk;
 
         if (halt == 1'b1) $finish;
 end
