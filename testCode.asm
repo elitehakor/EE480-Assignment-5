@@ -35,6 +35,9 @@ test:
     .word 0x601
     .text
 xorok:
+    xor    $u3, $u0, $u1
+    st     $u9, $u5
+    ld     $u0, $u5
     li32    $u5, 0x11111111
     li32    $u0, 0x66666666
     li32    $u1, 0x33333333

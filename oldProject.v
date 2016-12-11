@@ -1,8 +1,5 @@
 // basic sizes of things
 `define WORD	 [15:0]
-`define DOUBLE [31:0]
-`define high_instruction [31:16]
-`define low_instruction [15:0]
 `define Register [31:0]
 `define address [3:0]
 `define Opcode [15:12]
@@ -13,18 +10,22 @@
 `define STATE	[5:0]
 `define REGSIZE [15:0] 
 `define MEMSIZE [65535:0]
-`define HALF_MEMSIZE [32768:0]
+
+`define High_Opcode [15:12]
+`define High_Dest	  [11:8]
+`define High_Arg1	  [7:4]
+`define High_Arg2   [3:0]
 
 // opcode values, also state numbers
-`define OPand		4'b0000
-`define OPor   		4'b0001
-`define OPxor 		4'b0010
-`define OPadd		4'b0100
-`define OPaddv 		4'b0101
-`define OPshift		4'b0111
-`define OPpack 		4'b1000
-`define OPunpack 	4'b1001
-`define OPli		4'b1010
+`define OPand		  4'b0000
+`define OPor  	  4'b0001
+`define OPxor 	  4'b0010
+`define OPadd		  4'b0100
+`define OPaddv 	  4'b0101
+`define OPshift	  4'b0111
+`define OPpack 	  4'b1000
+`define OPunpack  4'b1001
+`define OPli		  4'b1010
 `define OPmorei 	4'b1011
 `define OPldanne	4'b1110
 `define OPstjzsys	4'b1111
@@ -33,15 +34,15 @@
 // state numbers only
 `define OPld		6'b010000
 `define OPany		6'b010010
-`define OPanyv		6'b010011
+`define OPanyv	6'b010011
 `define OPneg		6'b010100
-`define OPnegv		6'b010101
+`define OPnegv	6'b010101
 `define OPst		6'b110000
 `define OPjz		6'b110010
 `define OPjnz		6'b110011
 `define OPsys		6'b111111
 `define Start		5'b11111
-`define Start1		5'b11110
+`define Start1	5'b11110
 
 // Arg2 values for ld, any, anyv, neg, and negv
 `define Arg2ld		4'b0000
@@ -56,7 +57,7 @@
 `define Destjnz		4'b0011
 `define Destsys		4'b1111
 
-module instruction_block(clk, reset, jump_taken, jump_addr, pc_buff, ir);
+module instruction_block(clk, reset, jump_taken, jump_addr, pc_buff, ir, parallel_store_en, parallel_store_reg, parallel_store_addr );
 input clk, reset, jump_taken;
 input `Register jump_addr;
 output reg `WORD pc_buff, ir;
@@ -64,18 +65,16 @@ output reg jump_flag, jump_type;
 integer idx;
 
 reg high_or_low_instruction;
-wire `DOUBLE ir32;
 
-reg `WORD pc;
-reg `WORD mainmem_16 `MEMSIZE;
-reg `DOUBLE mainmem `HALF_MEMSIZE;
+reg `WORD   pc;
+reg `WORD   mainmem_16 `MEMSIZE;
 
 
 always @(reset) begin
   pc = 0;
   high_or_low_instruction = 1;
   $readmemh("mainmem_16.vmem",mainmem_16 );
-  $readmemh("mainmem.vmem",mainmem    );
+  $readmemh("mainmem.vmem",   mainmem    );
 
   for( idx=0; idx < 65536; idx = idx + 2 ) begin
     mainmem[idx/2] = { mainmem_16[idx], mainmem_16[idx + 1] };
@@ -85,16 +84,15 @@ always @(reset) begin
 end
 
 
-assign ir32 = (jump_taken) ? mainmen[jump_addr/2] : mainmem[pc/2];
+
 
 always @(posedge clk) begin
 
   $display("%x %x %x %x %x", jump_addr, jump_taken, high_or_low_instruction, ir, pc);
-	ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0) ? ir32 `low_instruction : ir32 `high_instruction ) :
-                         ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction )       );
+	ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0)      ? ir32 `low_instruction  : ir32 `high_instruction ) :
+                         ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction  ) );
 	pc <= ( (jump_taken) ? jump_addr : pc+1 );
 	pc_buff <= pc;	
-  high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
 
 end
 
@@ -129,8 +127,6 @@ always @(posedge clk) begin
    needs. Without this check the register file will send the wrong information to the ALU for the next instruction for WAR.
 
 */
-
-
 
 
        u0 <= regfile[6];  //register monitors
