@@ -16,6 +16,7 @@
 `define REGSIZE [15:0] 
 `define MEMSIZE [65535:0]
 `define HALF_MEMSIZE [32768:0]
+`define BUFFSIZE [0:9]
 
 `define High_Opcode [31:28]
 `define High_Dest	  [27:24]
@@ -78,6 +79,7 @@ wire `DOUBLE ir32;
 reg `WORD   pc;
 reg `WORD   mainmem_16 `MEMSIZE;
 reg `DOUBLE mainmem `HALF_MEMSIZE;
+reg `DOUBLE instruction_buffer `BUFFSIZE;
 
 
 always @(reset) begin
@@ -101,18 +103,14 @@ assign ir32 = (jump_taken) ? mainmen[jump_addr/2] : mainmem[pc/2];
 
 always @(posedge clk) begin
 
-  if ( !(jump_taken) &&
+  if ( !(jump_taken) && high_or_low_instruction != 1'b0 &&
       ( 
         ir32 `High_Opcode == `OPand     || 
         ir32 `High_Opcode == `OPor      ||
         ir32 `High_Opcode == `OPxor     ||
         ir32 `High_Opcode == `OPadd     ||
         ir32 `High_Opcode == `OPaddv    ||
-        ir32 `High_Opcode == `OPshift   ||
-        ir32 `High_Opcode == `OPpack    ||
-        ir32 `High_Opcode == `OPunpack  ||
-        ir32 `High_Opcode == `OPli      ||
-        ir32 `High_Opcode == `OPmorei   
+        ir32 `High_Opcode == `OPshift
       ) &&
       ir32 `Opcode == `OPstjzsys &&
       ir32 `Dest   == `Destst    &&
@@ -121,8 +119,12 @@ always @(posedge clk) begin
       ir32 `parallel_addr != ir32 `High_Arg1 
    ) begin
      parallel_store_en <= 1'b1;
+     pc <= pc+2;
+     // NOTE: We don't change high_or_low instructions here
    end else begin
      parallel_store_en <= 1'b0;
+     pc <= ( (jump_taken) ? jump_addr : pc+1 );
+     high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
    end
 
    $display("%x %x %d %d %d %d %d %d", ir32,
@@ -140,9 +142,7 @@ always @(posedge clk) begin
   //$display("%x %x %x %x %x", jump_addr, jump_taken, high_or_low_instruction, ir, pc);
 	ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0)      ? ir32 `low_instruction  : ir32 `high_instruction ) :
                          ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction  ) );
-	pc <= ( (jump_taken) ? jump_addr : pc+1 );
 	pc_buff <= pc;	
-  high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
 
 end
 
