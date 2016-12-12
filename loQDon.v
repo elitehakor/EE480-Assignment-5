@@ -1,8 +1,11 @@
 // basic sizes of things
 `define WORD	 [15:0]
 `define DOUBLE [31:0]
+`define QUAD   [63:0]
 `define high_instruction [31:16]
 `define low_instruction [15:0]
+`define high_instruction_64 [63:48]
+`define low_instruction_64  [47:32]
 `define Register [31:0]
 `define address [3:0]
 `define Opcode [15:12]
@@ -24,6 +27,22 @@
 `define High_Dest	  [27:24]
 `define High_Arg1   [23:20]
 `define High_Arg2	  [19:16]
+
+`define High_parallel_val  `High_Arg1
+`define High_parallel_addr `High_Arg2
+
+`define Opcode_64 [47:44]
+`define Dest_64	  [43:40]
+`define Arg1_64	  [39:36]
+`define Arg2_64   [35:32]
+`define High_Opcode_64 [63:60]
+`define High_Dest_64	 [59:56]
+`define High_Arg1_64   [55:52]
+`define High_Arg2_64	 [51:48]
+`define High_parallel_val_64  `High_Arg1_64
+`define High_parallel_addr_64	`High_Arg2_64
+`define parallel_val_64  `Arg1
+`define parallel_addr_64	`Arg2
 
 // opcode values, also state numbers
 `define OPand		  4'b0000
@@ -78,11 +97,15 @@ integer idx;
 
 reg high_or_low_instruction;
 reg parallel_store_en_buf;
+reg `WORD oo_instruction_buffer;
+reg `address  oo_parallel_val_reg, oo_parallel_addr_reg; 
 wire `DOUBLE ir32;
+wire `QUAD   ir64;
 
 reg `WORD   mainmem_16 `MEMSIZE;
 reg `DOUBLE mainmem `HALF_MEMSIZE;
 reg `DOUBLE instruction_buffer `BUFFSIZE;
+reg [1:0] oo_execuction;
 
 
 always @(reset) begin
@@ -95,6 +118,10 @@ always @(reset) begin
   parallel_store_en_buf = 0;
   parallel_addr_reg = 4'b0000;
   parallel_val_reg  = 4'b0000;
+  oo_execuction     = 2'b00;
+  oo_instruction_buffer = 16'h0000;
+  oo_parallel_val_reg   = 4'h0;
+  oo_parallel_addr_reg  = 4'h0;
 
   for( idx=0; idx < 65536; idx = idx + 2 ) begin
     mainmem[idx/2] = { mainmem_16[idx], mainmem_16[idx + 1] };
@@ -104,10 +131,20 @@ always @(reset) begin
 end
 
 assign ir32 = (jump_taken) ? mainmen[jump_addr/2] : mainmem[pc/2];
+assign ir64 = {mainmem[pc/2],mainmem[pc/2+1]};
 
 always @(posedge clk) begin
+  $display("ir64=%x 64h=%x 64l=%x 32g=%x 32l=%x", ir64, ir64 `High_Opcode_64, ir64 `Opcode_64, ir64 `High_Opcode, ir64 `Opcode);
 
-  if ( !(jump_taken) && pc%2 == 0 &&
+  if( oo_execuction == 2 ) begin
+    oo_execuction <= 2'h1;
+    ir <= oo_instruction_buffer;
+    high_or_low_instruction <= 1'b1;
+    parallel_val_reg  <= oo_parallel_val_reg;
+    parallel_addr_reg <= oo_parallel_addr_reg;
+    oo_instruction_buffer <= ir64 `low_instruction_64;
+    pc <= pc + 2;
+  end else if ( oo_execuction == 0 && !(jump_taken) && pc%2 == 0 &&
     ( 
     ir32 `High_Opcode == `OPand     || 
     ir32 `High_Opcode == `OPor      ||
@@ -123,17 +160,67 @@ always @(posedge clk) begin
     ir32 `parallel_addr != ir32 `High_Arg1 
   ) begin
     parallel_store_en <= 1'b1;
+    parallel_val_reg  <= ir32 `parallel_val;
+    parallel_addr_reg <= ir32 `parallel_addr;
+
     // NOTE: We don't change high_or_low instructions here
     ir <= ir32 `high_instruction;
     high_or_low_instruction <= 1'b1;
-    $display("HERE------------------pc=%x",pc);
-    
-  end else begin
-    //pc <= ( (jump_taken) ? jump_addr : pc + (parallel_store_en_buf ? 2 : 1 ) );
+    pc <= pc + 2;
+    //$display("HERE------------------pc=%x",pc);
+  end else if ( oo_execuction == 0 && !(jump_taken) && pc%2 == 0 &&
+      ( 
+        ir64 `High_Opcode_64 == `OPand     || 
+        ir64 `High_Opcode_64 == `OPor      ||
+        ir64 `High_Opcode_64 == `OPxor     ||
+        ir64 `High_Opcode_64 == `OPadd     ||
+        ir64 `High_Opcode_64 == `OPaddv    ||
+        ir64 `High_Opcode_64 == `OPshift
+      ) &&
+      ( 
+        ir64 `Opcode_64 == `OPand     || 
+        ir64 `Opcode_64 == `OPor      ||
+        ir64 `Opcode_64 == `OPxor     ||
+        ir64 `Opcode_64 == `OPadd     ||
+        ir64 `Opcode_64 == `OPaddv    ||
+        ir64 `Opcode_64 == `OPshift
+      ) &&
+      (
+        ir64 `High_Opcode == `OPstjzsys &&
+        ir64 `High_Dest   == `Destst    &&
+        ir64 `High_parallel_addr != ir64 `High_Dest_64 &&
+        ir64 `High_parallel_addr != ir64 `High_Arg2_64 &&
+        ir64 `High_parallel_addr != ir64 `High_Arg1_64 
+      ) &&    
+      ( 
+        ir64 `Opcode == `OPstjzsys &&
+        ir64 `Dest   == `Destst    &&
+        ir64 `parallel_addr != ir64 `Dest_64 &&
+        ir64 `parallel_addr != ir64 `Arg2_64 &&
+        ir64 `parallel_addr != ir64 `Arg1_64 
+      )
+    ) begin
+      oo_execuction <= 2'h2;
+      parallel_store_en <= 1'b1;
+      ir <= ir64 `high_instruction_64;
+      high_or_low_instruction <= 1'b1;
+      parallel_val_reg  <= ir64 `High_parallel_val;
+      parallel_addr_reg <= ir64 `High_parallel_addr;
+      oo_instruction_buffer <= ir64 `low_instruction_64;
+      oo_parallel_val_reg   <= ir64 `parallel_val;
+      oo_parallel_addr_reg  <= ir64 `parallel_addr;
+      pc <= pc + 2;
+
+      $display("------------OUT OF ORDER--------");
+    end else begin
     parallel_store_en <= 1'b0;
     ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0)      ? ir32 `low_instruction  : ir32 `high_instruction ) :
-      ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction  ) );
+                           ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction  ) );
     high_or_low_instruction <= ( (jump_taken) ? ( (jump_addr % 2 == 0) ? 1'b1 : 1'b0 ) : ~high_or_low_instruction );
+    parallel_val_reg  <= ir32 `parallel_val;
+    parallel_addr_reg <= ir32 `parallel_addr;
+    pc <= ( (jump_taken) ? jump_addr : pc + 1 );
+
   end
 
   //$display("%x %x %d %d %d %d %d %d", ir32,
@@ -145,11 +232,8 @@ always @(posedge clk) begin
   //  ir32 `parallel_addr != ir32 `High_Arg2,
   //  ir32 `parallel_addr != ir32 `High_Arg1 );
 
-  parallel_val_reg  <= ir32 `parallel_val;
-  parallel_addr_reg <= ir32 `parallel_addr;
-
   //$display("%x %x %x %x %x", jump_addr, jump_taken, high_or_low_instruction, ir, pc);
-  //parallel_store_en_buf <= ( !(jump_taken) && high_or_low_instruction == 1'b1 &&
+  //pc <= ( (jump_taken) ? jump_addr : pc + ((
   //                            ( 
   //                              ir32 `High_Opcode == `OPand     || 
   //                              ir32 `High_Opcode == `OPor      ||
@@ -163,26 +247,10 @@ always @(posedge clk) begin
   //                            ir32 `parallel_addr != ir32 `High_Dest &&
   //                            ir32 `parallel_addr != ir32 `High_Arg2 &&
   //                            ir32 `parallel_addr != ir32 `High_Arg1 
-  //                          );
-
-  pc <= ( (jump_taken) ? jump_addr : pc + ((
-                              ( 
-                                ir32 `High_Opcode == `OPand     || 
-                                ir32 `High_Opcode == `OPor      ||
-                                ir32 `High_Opcode == `OPxor     ||
-                                ir32 `High_Opcode == `OPadd     ||
-                                ir32 `High_Opcode == `OPaddv    ||
-                                ir32 `High_Opcode == `OPshift
-                              ) &&
-                              ir32 `Opcode == `OPstjzsys &&
-                              ir32 `Dest   == `Destst    &&
-                              ir32 `parallel_addr != ir32 `High_Dest &&
-                              ir32 `parallel_addr != ir32 `High_Arg2 &&
-                              ir32 `parallel_addr != ir32 `High_Arg1 
-                            ) ? 2:1));
+  //                          ) ? 2:1));
 
   //$display("ir32=%x ir=%x hol=%x ir[h]=%x, ir[l]=%x", ir32, ir, high_or_low_instruction, ir32 `high_instruction, ir32 `low_instruction);
-  $display( "IST: pc=%x ir=%x pe=%x pa=%x pv=%x jt=%x hol=%x", pc, ir, parallel_store_en, parallel_addr_reg, parallel_val_reg, jump_taken, high_or_low_instruction );
+  //$display( "IST: pc=%x ir=%x pe=%x pa=%x pv=%x jt=%x hol=%x", pc, ir, parallel_store_en, parallel_addr_reg, parallel_val_reg, jump_taken, high_or_low_instruction );
 
 end
 
@@ -322,7 +390,7 @@ always @(posedge clk) begin
        D <= ir_in `Dest;
 
      end
-     $display( "REG: pc=%x ir_out=%x pe=%x/%x pa=%x/%x pv=%x/%x jt=%x", pc, ir_in, parallel_store_en_in, parallel_store_en_out, parallel_addr_reg_in, parallel_addr_out, parallel_val_reg_in, parallel_val_out, jump_taken );
+     //$display( "REG: pc=%x ir_out=%x pe=%x/%x pa=%x/%x pv=%x/%x jt=%x", pc, ir_in, parallel_store_en_in, parallel_store_en_out, parallel_addr_reg_in, parallel_addr_out, parallel_val_reg_in, parallel_val_out, jump_taken );
    end
 
 
@@ -363,7 +431,7 @@ always @(posedge clk) begin
 
 
    always @(posedge clk) begin
-     $display("ir=%x buffered mem[%x]=%x to reg %x en=%x ALU_source1=%x ALUout_buff=%x we=%x", ir_in2, parallel_addr_buf,parallel_val_buf, D, parallel_store_en_buf, ALU_source1, ALUout_buff, write_en );
+     //$display("ir=%x buffered mem[%x]=%x to reg %x en=%x ALU_source1=%x ALUout_buff=%x we=%x", ir_in2, parallel_addr_buf,parallel_val_buf, D, parallel_store_en_buf, ALU_source1, ALUout_buff, write_en );
      /* Note code that looks like ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) 
      is checking to see if what the ALU just sent back to the register file is one of the arguments to the instruction
        it is evaluating. If the ALU just sent something to the register file to be stored then it could not possibly have
@@ -383,7 +451,7 @@ always @(posedge clk) begin
       if (jump_taken == 0) begin
 
         if (parallel_store_en == 1'b1) begin
-          $display("Setting %x to val %x", parallel_addr, parallel_val);
+          //$display("Setting %x to val %x", parallel_addr, parallel_val);
           datamem[parallel_addr] <= parallel_val;
         end
         case (ir_in2 `Opcode)
@@ -391,11 +459,11 @@ always @(posedge clk) begin
             case (ir_in2 `Arg2)	      // use Arg2 as extended opcode
               `Arg2ld: begin  //ld
               if( parallel_store_en_buf == 1'b1 && parallel_addr_buf == ALU_source1[3:0] ) begin
-                $display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
+                //$display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
                   ALUout <= parallel_val_buf;
                   ALUout_buff <= parallel_val_buf;
                 end else begin
-                $display("Loading mem[%x]=%x to reg %x", ALU_source1,datamem[ALU_source1], D );
+                //$display("Loading mem[%x]=%x to reg %x", ALU_source1,datamem[ALU_source1], D );
                   ALUout <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )];
                   ALUout_buff <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )]; 
                 end

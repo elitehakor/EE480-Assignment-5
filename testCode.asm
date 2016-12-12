@@ -9,6 +9,12 @@ parallel_0:
     nop
     and    $u3, $u0, $u2
     st     $u1, $u5
+    nop
+    nop
+    xor    $u2, $u0, $u1
+    xor    $u3, $u0, $u1
+    st     $u5, $u8
+    st     $u4, $u9
     and    $u3, $u0, $u1
     st     $u1, $u5
 xorok:
