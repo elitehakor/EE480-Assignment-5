@@ -294,8 +294,10 @@ always @(posedge clk) begin
 
  // Pass along parallel store information from the
  // corresponding registers
- parallel_addr_out <= regfile[parallel_val_reg_in ];
- parallel_val_out  <= regfile[parallel_addr_reg_in];
+ //parallel_addr_out <= ( (write_en && (ALUdest == parallel_addr_reg_in)) ? ALU_in : regfile[ir_in `Arg1] );regfile[parallel_val_reg_in ];
+ //parallel_val_out  <= ( (write_en && (ALUdest == parallel_val_reg_in)) ? ALU_in : regfile[ir_in `Arg1] );regfile[parallel_val_reg_in ];
+ parallel_addr_out <=  regfile[parallel_addr_reg_in];
+ parallel_val_out  <=  regfile[parallel_val_reg_in];
 
  ir_in2 <= ir_in;
 
