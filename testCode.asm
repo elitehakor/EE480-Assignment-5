@@ -6,11 +6,16 @@ parallel_0:
     xor    $u3, $u0, $u1
     st     $u4, $u9
     ld     $u0, $u4
-    nop
-    and    $u3, $u0, $u2
-    st     $u1, $u5
-    nop
-    nop
+    li     $u3, 0xe
+    li32    $u6, out_of_order_ok
+    xor     $u5, $u0, $u3
+    jz    $u5, $u6
+    sys
+out_of_order_ok:
+    li     $u1, 0x1
+    li     $u2, 0x2
+    li     $u3, 0x3
+    li     $u4, 0x4
     xor    $u2, $u0, $u1
     xor    $u3, $u0, $u1
     st     $u5, $u8

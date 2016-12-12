@@ -17,8 +17,6 @@
 `define immed 	[7:0]
 `define STATE	[5:0]
 `define REGSIZE [15:0] 
-//`define MEMSIZE [65535:0]
-//`define HALF_MEMSIZE [32768:0]
 `define MEMSIZE [0:65535]
 `define HALF_MEMSIZE [0:32768]
 `define BUFFSIZE [0:9]
@@ -458,7 +456,7 @@ always @(posedge clk) begin
           `OPldanne:
             case (ir_in2 `Arg2)	      // use Arg2 as extended opcode
               `Arg2ld: begin  //ld
-              if( parallel_store_en_buf == 1'b1 && parallel_addr_buf == ALU_source1[3:0] ) begin
+              if( parallel_store_en_buf == 1'b1 && parallel_addr_buf == ALU_source1 ) begin
                 //$display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
                   ALUout <= parallel_val_buf;
                   ALUout_buff <= parallel_val_buf;
