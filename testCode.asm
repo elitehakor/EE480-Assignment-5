@@ -2,13 +2,15 @@
 test:
     .word 0x601
     .text
-xorok:
+parallel_0:
     xor    $u3, $u0, $u1
     st     $u9, $u4
+    ld     $u0, $u4
     and    $u3, $u0, $u2
     st     $u1, $u5
     and    $u3, $u0, $u1
     st     $u1, $u5
+xorok:
     li32    $u5, 0x11111111
     li32    $u0, 0x66666666
     li32    $u1, 0x33333333
@@ -72,6 +74,13 @@ anyfail:
 
 nopok:
     nop ;assume if no crash nop worked
+parallel_1:
+    xor    $u3, $u0, $u1
+    st     $u9, $u4
+    and    $u3, $u0, $u2
+    st     $u1, $u5
+    and    $u3, $u0, $u1
+    st     $u1, $u5
 orok:
     li32    $u0, 0x66666666
     li32    $u1, 0x33333333

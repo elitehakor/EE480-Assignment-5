@@ -1,0 +1,5669 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1233430 .scope module, "testbench" "testbench" 2 460;
+ .timescale 0 0;
+v0x1276d00_0 .var "clk", 0 0;
+v0x1276fe0_0 .net "halt", 0 0, v0x1273500_0; 1 drivers
+v0x1277060_0 .net "ir", 15 0, v0x12761a0_0; 1 drivers
+v0x12770e0_0 .net "jump", 0 0, v0x1276370_0; 1 drivers
+v0x1277160_0 .net "pc", 15 0, v0x12765c0_0; 1 drivers
+v0x12771e0_0 .var "reset", 0 0;
+v0x12772f0_0 .net "u0", 31 0, v0x1274300_0; 1 drivers
+v0x1277370_0 .net "u1", 31 0, v0x1274400_0; 1 drivers
+v0x1277440_0 .net "u2", 31 0, v0x1274480_0; 1 drivers
+v0x1277510_0 .net "u3", 31 0, v0x1274380_0; 1 drivers
+v0x12775e0_0 .net "u4", 31 0, v0x1274590_0; 1 drivers
+v0x12776b0_0 .net "u5", 31 0, v0x1274500_0; 1 drivers
+v0x1277780_0 .net "u6", 31 0, v0x12746b0_0; 1 drivers
+v0x1277850_0 .net "u7", 31 0, v0x1274610_0; 1 drivers
+v0x12779a0_0 .net "u8", 31 0, v0x12747e0_0; 1 drivers
+v0x1277a70_0 .net "u9", 31 0, v0x1274730_0; 1 drivers
+S_0x11f4e40 .scope module, "p1" "processor" 2 482, 2 430, S_0x1233430;
+ .timescale 0 0;
+v0x1275a10_0 .net "ALU_out", 31 0, v0x1273070_0; 1 drivers
+v0x1275c40_0 .net "ALU_source1", 31 0, v0x1273b50_0; 1 drivers
+v0x1275d10_0 .net "ALU_source2", 31 0, v0x1273c00_0; 1 drivers
+v0x1275de0_0 .net "ALUdest", 3 0, v0x1272f20_0; 1 drivers
+v0x1275eb0_0 .net "D", 3 0, v0x1273d90_0; 1 drivers
+v0x1275f80_0 .net "P", 3 0, v0x1273e40_0; 1 drivers
+v0x1276050_0 .net "clk", 0 0, v0x1276d00_0; 1 drivers
+v0x12760d0_0 .alias "halt", 0 0, v0x1276fe0_0;
+v0x12761a0_0 .var "ir", 15 0;
+v0x1276220_0 .net "ir_conn", 15 0, v0x12751c0_0; 1 drivers
+v0x12762a0_0 .net "ir_conn2", 15 0, v0x1273ff0_0; 1 drivers
+v0x1276370_0 .var "jump", 0 0;
+v0x12763f0_0 .net "jump_addr", 31 0, v0x12736b0_0; 1 drivers
+v0x12764c0_0 .net "jump_taken", 0 0, v0x1273750_0; 1 drivers
+v0x12765c0_0 .var "pc", 15 0;
+v0x1276640_0 .net "pc_buff", 15 0, v0x1275880_0; 1 drivers
+v0x1276540_0 .net "reset", 0 0, v0x12771e0_0; 1 drivers
+v0x12767a0_0 .alias "u0", 31 0, v0x12772f0_0;
+v0x12766c0_0 .alias "u1", 31 0, v0x1277370_0;
+v0x12768c0_0 .alias "u2", 31 0, v0x1277440_0;
+v0x1276820_0 .alias "u3", 31 0, v0x1277510_0;
+v0x12769f0_0 .alias "u4", 31 0, v0x12775e0_0;
+v0x1276940_0 .alias "u5", 31 0, v0x12776b0_0;
+v0x1276b30_0 .alias "u6", 31 0, v0x1277780_0;
+v0x1276a70_0 .alias "u7", 31 0, v0x1277850_0;
+v0x1276c80_0 .alias "u8", 31 0, v0x12779a0_0;
+v0x1276bb0_0 .alias "u9", 31 0, v0x1277a70_0;
+v0x1276de0_0 .net "write_en", 0 0, v0x1273910_0; 1 drivers
+S_0x1274a70 .scope module, "ib" "instruction_block" 2 451, 2 64, S_0x11f4e40;
+ .timescale 0 0;
+v0x1274860_0 .net *"_s0", 2 0, C4<010>; 1 drivers
+v0x1274b60_0 .net *"_s10", 31 0, L_0x1277f30; 1 drivers
+v0x1274be0_0 .net *"_s12", 2 0, C4<010>; 1 drivers
+v0x1274c80_0 .net *"_s14", 15 0, L_0x1278010; 1 drivers
+v0x1274d30_0 .net *"_s2", 31 0, L_0x1277bd0; 1 drivers
+v0x1274dd0_0 .net *"_s5", 0 0, L_0x1277cc0; 1 drivers
+v0x1274e70_0 .net *"_s6", 31 0, L_0x1277db0; 1 drivers
+v0x1274f10_0 .net *"_s9", 30 0, C4<0000000000000000000000000000000>; 1 drivers
+v0x1274fb0_0 .alias "clk", 0 0, v0x1276050_0;
+v0x1275080_0 .var "high_or_low_instruction", 0 0;
+v0x1275120_0 .var/i "idx", 31 0;
+v0x12751c0_0 .var "ir", 15 0;
+v0x1275240_0 .net "ir32", 31 0, L_0x1278150; 1 drivers
+v0x12752c0_0 .alias "jump_addr", 31 0, v0x12763f0_0;
+v0x12753c0_0 .var "jump_flag", 0 0;
+v0x1275440_0 .alias "jump_taken", 0 0, v0x12764c0_0;
+v0x1275340_0 .var "jump_type", 0 0;
+v0x1275570 .array "mainmem", 0 32768, 31 0;
+v0x12754c0 .array "mainmem_16", 0 65535, 15 0;
+v0x1275690_0 .net "mainmen", 0 0, C4<z>; 0 drivers
+v0x1275610_0 .var "parallel_store_addr", 0 0;
+v0x12757e0_0 .var "parallel_store_en", 0 0;
+v0x1275730_0 .var "parallel_store_reg", 0 0;
+v0x1275940_0 .var "pc", 15 0;
+v0x1275880_0 .var "pc_buff", 15 0;
+v0x1275a90_0 .alias "reset", 0 0, v0x1276540_0;
+L_0x1277bd0 .arith/div 32, v0x12736b0_0, C4<010>;
+L_0x1277cc0 .part/v C4<z>, L_0x1277bd0, 1;
+L_0x1277db0 .concat [ 1 31 0 0], L_0x1277cc0, C4<0000000000000000000000000000000>;
+L_0x1277f30 .array/port v0x1275570, L_0x1278010;
+L_0x1278010 .arith/div 16, v0x1275940_0, C4<010>;
+L_0x1278150 .functor MUXZ 32, L_0x1277f30, L_0x1277db0, v0x1273750_0, C4<>;
+S_0x1273a40 .scope module, "rb" "regfile_block" 2 452, 2 115, S_0x11f4e40;
+ .timescale 0 0;
+v0x12737d0_0 .alias "ALU_in", 31 0, v0x1275a10_0;
+v0x1273b50_0 .var "ALU_source1", 31 0;
+v0x1273c00_0 .var "ALU_source2", 31 0;
+v0x1273cb0_0 .alias "ALUdest", 3 0, v0x1275de0_0;
+v0x1273d90_0 .var "D", 3 0;
+v0x1273e40_0 .var "P", 3 0;
+v0x1273ec0_0 .alias "clk", 0 0, v0x1276050_0;
+v0x1273f70_0 .alias "ir_in", 15 0, v0x1276220_0;
+v0x1273ff0_0 .var "ir_in2", 15 0;
+v0x12740a0_0 .alias "jump_taken", 0 0, v0x12764c0_0;
+v0x1274150_0 .alias "pc", 15 0, v0x1276640_0;
+v0x12741d0 .array "regfile", 0 15, 31 0;
+v0x1274250_0 .alias "reset", 0 0, v0x1276540_0;
+v0x1274300_0 .var "u0", 31 0;
+v0x1274400_0 .var "u1", 31 0;
+v0x1274480_0 .var "u2", 31 0;
+v0x1274380_0 .var "u3", 31 0;
+v0x1274590_0 .var "u4", 31 0;
+v0x1274500_0 .var "u5", 31 0;
+v0x12746b0_0 .var "u6", 31 0;
+v0x1274610_0 .var "u7", 31 0;
+v0x12747e0_0 .var "u8", 31 0;
+v0x1274730_0 .var "u9", 31 0;
+v0x1274920_0 .alias "write_en", 0 0, v0x1276de0_0;
+S_0x11f4f30 .scope module, "ab" "ALU_block" 2 454, 2 226, S_0x11f4e40;
+ .timescale 0 0;
+v0x11a3160_0 .alias "ALU_source1", 31 0, v0x1275c40_0;
+v0x1272e80_0 .alias "ALU_source2", 31 0, v0x1275d10_0;
+v0x1272f20_0 .var "ALUdest", 3 0;
+v0x1272fc0_0 .var "ALUdest_buff", 3 0;
+v0x1273070_0 .var "ALUout", 31 0;
+v0x1273110_0 .var "ALUout_buff", 31 0;
+v0x12731f0_0 .alias "D", 3 0, v0x1275eb0_0;
+v0x1273290_0 .alias "P", 3 0, v0x1275f80_0;
+v0x1273380_0 .alias "clk", 0 0, v0x1276050_0;
+v0x1273420 .array "datamem", 0 65535, 31 0;
+v0x1273500_0 .var "halt", 0 0;
+v0x12735a0_0 .alias "ir_in2", 15 0, v0x12762a0_0;
+v0x12736b0_0 .var "jump_addr", 31 0;
+v0x1273750_0 .var "jump_taken", 0 0;
+v0x1273870_0 .alias "reset", 0 0, v0x1276540_0;
+v0x1273910_0 .var "write_en", 0 0;
+E_0x11cde40 .event posedge, v0x1273380_0;
+E_0x11d0a90 .event edge, v0x1273870_0;
+    .scope S_0x1274a70;
+T_0 ;
+    %wait E_0x11d0a90;
+    %set/v v0x1275940_0, 0, 16;
+    %set/v v0x1275080_0, 1, 1;
+    %vpi_call 2 83 "$readmemh", "mainmem_16.vmem", v0x12754c0;
+    %vpi_call 2 84 "$readmemh", "mainmem.vmem", v0x1275570;
+    %set/v v0x1275120_0, 0, 32;
+T_0.0 ;
+    %load/v 8, v0x1275120_0, 32;
+    %movi 40, 65536, 32;
+    %cmp/s 8, 40, 32;
+    %jmp/0xz T_0.1, 5;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 40, v0x1275120_0, 32;
+    %ix/get/s 3, 40, 32;
+    %load/av 8, v0x12754c0, 16;
+    %ix/getv/s 3, v0x1275120_0;
+    %load/av 24, v0x12754c0, 16;
+    %load/v 40, v0x1275120_0, 32;
+    %movi 72, 2, 32;
+    %div/s 40, 72, 32;
+    %ix/get/s 3, 40, 32;
+   %jmp/1 t_0, 4;
+   %ix/load 1, 0, 0;
+   %set/av v0x1275570, 8, 32;
+t_0 ;
+    %ix/load 0, 2, 0;
+    %load/vp0/s 8, v0x1275120_0, 32;
+    %set/v v0x1275120_0, 8, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x1274a70;
+T_1 ;
+    %wait E_0x11cde40;
+    %vpi_call 2 103 "$display", "%x %x %x %x %x", v0x12752c0_0, v0x1275440_0, v0x1275080_0, v0x12751c0_0, v0x1275940_0;
+    %load/v 8, v0x1275440_0, 1;
+    %jmp/0  T_1.0, 8;
+    %load/v 9, v0x12752c0_0, 32;
+    %movi 41, 2, 32;
+    %mod 9, 41, 32;
+    %cmpi/u 9, 0, 32;
+    %inv 4, 1;
+    %mov 9, 4, 1;
+    %jmp/0  T_1.3, 9;
+    %load/v 10, v0x1275240_0, 16; Only need 16 of 32 bits
+; Save base=10 wid=16 in lookaside.
+    %jmp/1  T_1.5, 9;
+T_1.3 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.6, 4;
+    %load/x1p 26, v0x1275240_0, 16;
+    %jmp T_1.7;
+T_1.6 ;
+    %mov 26, 2, 16;
+T_1.7 ;
+; Save base=26 wid=16 in lookaside.
+    %jmp/0  T_1.4, 9;
+ ; End of false expr.
+    %blend  10, 26, 16; Condition unknown.
+    %jmp  T_1.5;
+T_1.4 ;
+    %mov 10, 26, 16; Return false value
+T_1.5 ;
+    %jmp/1  T_1.2, 8;
+T_1.0 ; End of true expr.
+    %load/v 9, v0x1275080_0, 1;
+    %jmp/0  T_1.8, 9;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.11, 4;
+    %load/x1p 26, v0x1275240_0, 16;
+    %jmp T_1.12;
+T_1.11 ;
+    %mov 26, 2, 16;
+T_1.12 ;
+; Save base=26 wid=16 in lookaside.
+    %jmp/1  T_1.10, 9;
+T_1.8 ; End of true expr.
+    %load/v 42, v0x1275240_0, 16; Only need 16 of 32 bits
+; Save base=42 wid=16 in lookaside.
+    %jmp/0  T_1.9, 9;
+ ; End of false expr.
+    %blend  26, 42, 16; Condition unknown.
+    %jmp  T_1.10;
+T_1.9 ;
+    %mov 26, 42, 16; Return false value
+T_1.10 ;
+    %jmp/0  T_1.1, 8;
+ ; End of false expr.
+    %blend  10, 26, 16; Condition unknown.
+    %jmp  T_1.2;
+T_1.1 ;
+    %mov 10, 26, 16; Return false value
+T_1.2 ;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x12751c0_0, 0, 10;
+    %load/v 8, v0x1275440_0, 1;
+    %jmp/0  T_1.13, 8;
+    %load/v 9, v0x12752c0_0, 32;
+    %jmp/1  T_1.15, 8;
+T_1.13 ; End of true expr.
+    %load/v 41, v0x1275940_0, 16;
+    %mov 57, 0, 16;
+    %addi 41, 1, 32;
+    %jmp/0  T_1.14, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_1.15;
+T_1.14 ;
+    %mov 9, 41, 32; Return false value
+T_1.15 ;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x1275940_0, 0, 9;
+    %load/v 8, v0x1275940_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x1275880_0, 0, 8;
+    %load/v 8, v0x1275440_0, 1;
+    %jmp/0  T_1.16, 8;
+    %load/v 9, v0x12752c0_0, 32;
+    %movi 41, 2, 32;
+    %mod 9, 41, 32;
+    %cmpi/u 9, 0, 32;
+    %mov 9, 4, 1;
+    %jmp/0  T_1.19, 9;
+    %mov 10, 1, 1;
+    %jmp/1  T_1.21, 9;
+T_1.19 ; End of true expr.
+    %jmp/0  T_1.20, 9;
+ ; End of false expr.
+    %blend  10, 0, 1; Condition unknown.
+    %jmp  T_1.21;
+T_1.20 ;
+    %mov 10, 0, 1; Return false value
+T_1.21 ;
+    %jmp/1  T_1.18, 8;
+T_1.16 ; End of true expr.
+    %load/v 9, v0x1275080_0, 1;
+    %inv 9, 1;
+    %jmp/0  T_1.17, 8;
+ ; End of false expr.
+    %blend  10, 9, 1; Condition unknown.
+    %jmp  T_1.18;
+T_1.17 ;
+    %mov 10, 9, 1; Return false value
+T_1.18 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1275080_0, 0, 10;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x1273a40;
+T_2 ;
+    %wait E_0x11d0a90;
+    %set/v v0x1273b50_0, 0, 32;
+    %set/v v0x1273c00_0, 0, 32;
+    %vpi_call 2 131 "$readmemh", "regfile.vmem", v0x12741d0;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_0x1273a40;
+T_3 ;
+    %wait E_0x11cde40;
+    %ix/load 3, 6, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274300_0, 0, 8;
+    %ix/load 3, 7, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274400_0, 0, 8;
+    %ix/load 3, 8, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274480_0, 0, 8;
+    %ix/load 3, 9, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274380_0, 0, 8;
+    %ix/load 3, 10, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274590_0, 0, 8;
+    %ix/load 3, 11, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274500_0, 0, 8;
+    %ix/load 3, 12, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x12746b0_0, 0, 8;
+    %ix/load 3, 13, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274610_0, 0, 8;
+    %ix/load 3, 14, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x12747e0_0, 0, 8;
+    %ix/load 3, 15, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1274730_0, 0, 8;
+    %load/v 8, v0x1273f70_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x1273ff0_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %jmp/0xz  T_3.0, 8;
+    %load/v 8, v0x12737d0_0, 32;
+    %ix/getv 3, v0x1273cb0_0;
+    %jmp/1 t_1, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x12741d0, 0, 8;
+t_1 ;
+T_3.0 ;
+    %load/v 8, v0x12740a0_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_3.2, 4;
+    %ix/load 1, 12, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.4, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.5;
+T_3.4 ;
+    %mov 8, 2, 4;
+T_3.5 ;
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 14, 4;
+    %jmp/1 T_3.6, 6;
+    %cmpi/u 8, 15, 4;
+    %jmp/1 T_3.7, 6;
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_3.8, 6;
+    %cmpi/u 8, 1, 4;
+    %jmp/1 T_3.9, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_3.10, 6;
+    %cmpi/u 8, 4, 4;
+    %jmp/1 T_3.11, 6;
+    %cmpi/u 8, 5, 4;
+    %jmp/1 T_3.12, 6;
+    %cmpi/u 8, 7, 4;
+    %jmp/1 T_3.13, 6;
+    %cmpi/u 8, 8, 4;
+    %jmp/1 T_3.14, 6;
+    %cmpi/u 8, 9, 4;
+    %jmp/1 T_3.15, 6;
+    %cmpi/u 8, 10, 4;
+    %jmp/1 T_3.16, 6;
+    %cmpi/u 8, 11, 4;
+    %jmp/1 T_3.17, 6;
+    %jmp T_3.18;
+T_3.6 ;
+    %load/v 8, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_3.19, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_3.20, 6;
+    %cmpi/u 8, 3, 4;
+    %jmp/1 T_3.21, 6;
+    %cmpi/u 8, 4, 4;
+    %jmp/1 T_3.22, 6;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.25, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.26;
+T_3.25 ;
+    %mov 8, 2, 4;
+T_3.26 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.30, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.31;
+T_3.30 ;
+    %mov 13, 2, 4;
+T_3.31 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.27, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.29, 8;
+T_3.27 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.32, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.33;
+T_3.32 ;
+    %mov 73, 2, 4;
+T_3.33 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.28, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.29;
+T_3.28 ;
+    %mov 9, 41, 32; Return false value
+T_3.29 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %jmp T_3.24;
+T_3.19 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.34, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.35;
+T_3.34 ;
+    %mov 8, 2, 4;
+T_3.35 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.39, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.40;
+T_3.39 ;
+    %mov 13, 2, 4;
+T_3.40 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.36, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.38, 8;
+T_3.36 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.41, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.42;
+T_3.41 ;
+    %mov 73, 2, 4;
+T_3.42 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.37, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.38;
+T_3.37 ;
+    %mov 9, 41, 32; Return false value
+T_3.38 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %jmp T_3.24;
+T_3.20 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.43, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.44;
+T_3.43 ;
+    %mov 8, 2, 4;
+T_3.44 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.48, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.49;
+T_3.48 ;
+    %mov 13, 2, 4;
+T_3.49 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.45, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.47, 8;
+T_3.45 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.50, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.51;
+T_3.50 ;
+    %mov 73, 2, 4;
+T_3.51 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.46, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.47;
+T_3.46 ;
+    %mov 9, 41, 32; Return false value
+T_3.47 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %jmp T_3.24;
+T_3.21 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.52, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.53;
+T_3.52 ;
+    %mov 8, 2, 4;
+T_3.53 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.57, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.58;
+T_3.57 ;
+    %mov 13, 2, 4;
+T_3.58 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.54, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.56, 8;
+T_3.54 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.59, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.60;
+T_3.59 ;
+    %mov 73, 2, 4;
+T_3.60 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.55, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.56;
+T_3.55 ;
+    %mov 9, 41, 32; Return false value
+T_3.56 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %jmp T_3.24;
+T_3.22 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.61, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.62;
+T_3.61 ;
+    %mov 8, 2, 4;
+T_3.62 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.66, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.67;
+T_3.66 ;
+    %mov 13, 2, 4;
+T_3.67 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.63, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.65, 8;
+T_3.63 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.68, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.69;
+T_3.68 ;
+    %mov 73, 2, 4;
+T_3.69 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.64, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.65;
+T_3.64 ;
+    %mov 9, 41, 32; Return false value
+T_3.65 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %jmp T_3.24;
+T_3.24 ;
+    %jmp T_3.18;
+T_3.7 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.70, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.71;
+T_3.70 ;
+    %mov 8, 2, 4;
+T_3.71 ;
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_3.72, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_3.73, 6;
+    %cmpi/u 8, 3, 4;
+    %jmp/1 T_3.74, 6;
+    %jmp T_3.75;
+T_3.72 ;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.79, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.80;
+T_3.79 ;
+    %mov 13, 2, 4;
+T_3.80 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.76, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.78, 8;
+T_3.76 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.81, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.82;
+T_3.81 ;
+    %mov 73, 2, 4;
+T_3.82 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.77, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.78;
+T_3.77 ;
+    %mov 9, 41, 32; Return false value
+T_3.78 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.83, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.85, 8;
+T_3.83 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.84, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.85;
+T_3.84 ;
+    %mov 9, 41, 32; Return false value
+T_3.85 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.75;
+T_3.73 ;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.89, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.90;
+T_3.89 ;
+    %mov 13, 2, 4;
+T_3.90 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.86, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.88, 8;
+T_3.86 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.91, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.92;
+T_3.91 ;
+    %mov 73, 2, 4;
+T_3.92 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.87, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.88;
+T_3.87 ;
+    %mov 9, 41, 32; Return false value
+T_3.88 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.93, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.95, 8;
+T_3.93 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.94, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.95;
+T_3.94 ;
+    %mov 9, 41, 32; Return false value
+T_3.95 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.75;
+T_3.74 ;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.99, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.100;
+T_3.99 ;
+    %mov 13, 2, 4;
+T_3.100 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.96, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.98, 8;
+T_3.96 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.101, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.102;
+T_3.101 ;
+    %mov 73, 2, 4;
+T_3.102 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.97, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.98;
+T_3.97 ;
+    %mov 9, 41, 32; Return false value
+T_3.98 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.103, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.105, 8;
+T_3.103 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.104, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.105;
+T_3.104 ;
+    %mov 9, 41, 32; Return false value
+T_3.105 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.75;
+T_3.75 ;
+    %jmp T_3.18;
+T_3.8 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.106, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.107;
+T_3.106 ;
+    %mov 8, 2, 4;
+T_3.107 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.111, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.112;
+T_3.111 ;
+    %mov 13, 2, 4;
+T_3.112 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.108, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.110, 8;
+T_3.108 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.113, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.114;
+T_3.113 ;
+    %mov 73, 2, 4;
+T_3.114 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.109, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.110;
+T_3.109 ;
+    %mov 9, 41, 32; Return false value
+T_3.110 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.115, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.117, 8;
+T_3.115 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.116, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.117;
+T_3.116 ;
+    %mov 9, 41, 32; Return false value
+T_3.117 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.9 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.118, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.119;
+T_3.118 ;
+    %mov 8, 2, 4;
+T_3.119 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.123, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.124;
+T_3.123 ;
+    %mov 13, 2, 4;
+T_3.124 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.120, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.122, 8;
+T_3.120 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.125, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.126;
+T_3.125 ;
+    %mov 73, 2, 4;
+T_3.126 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.121, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.122;
+T_3.121 ;
+    %mov 9, 41, 32; Return false value
+T_3.122 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.127, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.129, 8;
+T_3.127 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.128, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.129;
+T_3.128 ;
+    %mov 9, 41, 32; Return false value
+T_3.129 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.10 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.130, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.131;
+T_3.130 ;
+    %mov 8, 2, 4;
+T_3.131 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.135, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.136;
+T_3.135 ;
+    %mov 13, 2, 4;
+T_3.136 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.132, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.134, 8;
+T_3.132 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.137, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.138;
+T_3.137 ;
+    %mov 73, 2, 4;
+T_3.138 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.133, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.134;
+T_3.133 ;
+    %mov 9, 41, 32; Return false value
+T_3.134 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.139, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.141, 8;
+T_3.139 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.140, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.141;
+T_3.140 ;
+    %mov 9, 41, 32; Return false value
+T_3.141 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.11 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.142, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.143;
+T_3.142 ;
+    %mov 8, 2, 4;
+T_3.143 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.147, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.148;
+T_3.147 ;
+    %mov 13, 2, 4;
+T_3.148 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.144, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.146, 8;
+T_3.144 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.149, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.150;
+T_3.149 ;
+    %mov 73, 2, 4;
+T_3.150 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.145, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.146;
+T_3.145 ;
+    %mov 9, 41, 32; Return false value
+T_3.146 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.151, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.153, 8;
+T_3.151 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.152, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.153;
+T_3.152 ;
+    %mov 9, 41, 32; Return false value
+T_3.153 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.12 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.154, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.155;
+T_3.154 ;
+    %mov 8, 2, 4;
+T_3.155 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.159, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.160;
+T_3.159 ;
+    %mov 13, 2, 4;
+T_3.160 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.156, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.158, 8;
+T_3.156 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.161, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.162;
+T_3.161 ;
+    %mov 73, 2, 4;
+T_3.162 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.157, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.158;
+T_3.157 ;
+    %mov 9, 41, 32; Return false value
+T_3.158 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.163, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.165, 8;
+T_3.163 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.164, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.165;
+T_3.164 ;
+    %mov 9, 41, 32; Return false value
+T_3.165 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.13 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.166, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.167;
+T_3.166 ;
+    %mov 8, 2, 4;
+T_3.167 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.171, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.172;
+T_3.171 ;
+    %mov 13, 2, 4;
+T_3.172 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.168, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.170, 8;
+T_3.168 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.173, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.174;
+T_3.173 ;
+    %mov 73, 2, 4;
+T_3.174 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.169, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.170;
+T_3.169 ;
+    %mov 9, 41, 32; Return false value
+T_3.170 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %load/v 13, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.175, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.177, 8;
+T_3.175 ; End of true expr.
+    %load/v 73, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.176, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.177;
+T_3.176 ;
+    %mov 9, 41, 32; Return false value
+T_3.177 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.14 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.178, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.179;
+T_3.178 ;
+    %mov 8, 2, 4;
+T_3.179 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273e40_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.183, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.184;
+T_3.183 ;
+    %mov 13, 2, 4;
+T_3.184 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.180, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.182, 8;
+T_3.180 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.185, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.186;
+T_3.185 ;
+    %mov 73, 2, 4;
+T_3.186 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.181, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.182;
+T_3.181 ;
+    %mov 9, 41, 32; Return false value
+T_3.182 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.190, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.191;
+T_3.190 ;
+    %mov 13, 2, 4;
+T_3.191 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.187, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.189, 8;
+T_3.187 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.192, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.193;
+T_3.192 ;
+    %mov 73, 2, 4;
+T_3.193 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.188, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.189;
+T_3.188 ;
+    %mov 9, 41, 32; Return false value
+T_3.189 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.15 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.194, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.195;
+T_3.194 ;
+    %mov 8, 2, 4;
+T_3.195 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1273f70_0, 4; Only need 4 of 16 bits
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273e40_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.199, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.200;
+T_3.199 ;
+    %mov 13, 2, 4;
+T_3.200 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.196, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.198, 8;
+T_3.196 ; End of true expr.
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.201, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.202;
+T_3.201 ;
+    %mov 73, 2, 4;
+T_3.202 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.197, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.198;
+T_3.197 ;
+    %mov 9, 41, 32; Return false value
+T_3.198 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 9;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.206, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.207;
+T_3.206 ;
+    %mov 13, 2, 4;
+T_3.207 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.203, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.205, 8;
+T_3.203 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.208, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.209;
+T_3.208 ;
+    %mov 73, 2, 4;
+T_3.209 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.204, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.205;
+T_3.204 ;
+    %mov 9, 41, 32; Return false value
+T_3.205 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.16 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.210, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.211;
+T_3.210 ;
+    %mov 8, 2, 4;
+T_3.211 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1273f70_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273b50_0, 0, 8;
+    %jmp T_3.18;
+T_3.17 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.212, 4;
+    %load/x1p 8, v0x1273f70_0, 4;
+    %jmp T_3.213;
+T_3.212 ;
+    %mov 8, 2, 4;
+T_3.213 ;
+; Save base=8 wid=4 in lookaside.
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1273d90_0, 0, 8;
+    %load/v 8, v0x1273f70_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273b50_0, 0, 8;
+    %load/v 8, v0x1274920_0, 1;
+    %load/v 9, v0x1273cb0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.217, 4;
+    %load/x1p 13, v0x1273f70_0, 4;
+    %jmp T_3.218;
+T_3.217 ;
+    %mov 13, 2, 4;
+T_3.218 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_3.214, 8;
+    %load/v 9, v0x12737d0_0, 32;
+    %jmp/1  T_3.216, 8;
+T_3.214 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.219, 4;
+    %load/x1p 73, v0x1273f70_0, 4;
+    %jmp T_3.220;
+T_3.219 ;
+    %mov 73, 2, 4;
+T_3.220 ;
+; Save base=73 wid=4 in lookaside.
+    %ix/get 3, 73, 4;
+    %load/av 41, v0x12741d0, 32;
+    %jmp/0  T_3.215, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_3.216;
+T_3.215 ;
+    %mov 9, 41, 32; Return false value
+T_3.216 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 9;
+    %jmp T_3.18;
+T_3.18 ;
+    %jmp T_3.3;
+T_3.2 ;
+    %ix/load 3, 0, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273b50_0, 0, 8;
+    %ix/load 3, 0, 0;
+    %mov 4, 0, 1;
+    %load/av 8, v0x12741d0, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273c00_0, 0, 8;
+    %ix/load 3, 0, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_3.221, 4;
+    %ix/get/s 0, 0, 2;
+T_3.221 ;
+    %load/avx.p 8, v0x12741d0, 0;
+    %load/avx.p 9, v0x12741d0, 0;
+    %load/avx.p 10, v0x12741d0, 0;
+    %load/avx.p 11, v0x12741d0, 0;
+    %load/avx.p 12, v0x12741d0, 0;
+    %load/avx.p 13, v0x12741d0, 0;
+    %load/avx.p 14, v0x12741d0, 0;
+    %load/avx.p 15, v0x12741d0, 0;
+    %load/avx.p 16, v0x12741d0, 0;
+    %load/avx.p 17, v0x12741d0, 0;
+    %load/avx.p 18, v0x12741d0, 0;
+    %load/avx.p 19, v0x12741d0, 0;
+    %load/avx.p 20, v0x12741d0, 0;
+    %load/avx.p 21, v0x12741d0, 0;
+    %load/avx.p 22, v0x12741d0, 0;
+    %load/avx.p 23, v0x12741d0, 0;
+; Save base=8 wid=16 in lookaside.
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x1273ff0_0, 0, 8;
+T_3.3 ;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x11f4f30;
+T_4 ;
+    %wait E_0x11d0a90;
+    %set/v v0x1273500_0, 0, 1;
+    %set/v v0x1273910_0, 0, 1;
+    %set/v v0x1273750_0, 0, 1;
+    %set/v v0x12736b0_0, 0, 32;
+    %set/v v0x1273110_0, 0, 32;
+    %set/v v0x1273070_0, 0, 32;
+    %set/v v0x1272fc0_0, 0, 4;
+    %set/v v0x1272f20_0, 0, 4;
+    %vpi_call 2 248 "$readmemh", "datamem.vmem", v0x1273420;
+    %jmp T_4;
+    .thread T_4, $push;
+    .scope S_0x11f4f30;
+T_5 ;
+    %wait E_0x11cde40;
+    %ix/load 1, 12, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.0, 4;
+    %load/x1p 8, v0x12735a0_0, 4;
+    %jmp T_5.1;
+T_5.0 ;
+    %mov 8, 2, 4;
+T_5.1 ;
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 15, 4;
+    %jmp/0xz  T_5.2, 4;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273910_0, 0, 0;
+    %jmp T_5.3;
+T_5.2 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273910_0, 0, 1;
+T_5.3 ;
+    %load/v 8, v0x12731f0_0, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1272fc0_0, 0, 8;
+    %load/v 8, v0x12731f0_0, 4;
+    %ix/load 0, 4, 0;
+    %assign/v0 v0x1272f20_0, 0, 8;
+    %load/v 8, v0x1273750_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_5.4, 4;
+    %ix/load 1, 12, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.6, 4;
+    %load/x1p 8, v0x12735a0_0, 4;
+    %jmp T_5.7;
+T_5.6 ;
+    %mov 8, 2, 4;
+T_5.7 ;
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 14, 4;
+    %jmp/1 T_5.8, 6;
+    %cmpi/u 8, 15, 4;
+    %jmp/1 T_5.9, 6;
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_5.10, 6;
+    %cmpi/u 8, 1, 4;
+    %jmp/1 T_5.11, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_5.12, 6;
+    %cmpi/u 8, 4, 4;
+    %jmp/1 T_5.13, 6;
+    %cmpi/u 8, 5, 4;
+    %jmp/1 T_5.14, 6;
+    %cmpi/u 8, 7, 4;
+    %jmp/1 T_5.15, 6;
+    %cmpi/u 8, 8, 4;
+    %jmp/1 T_5.16, 6;
+    %cmpi/u 8, 9, 4;
+    %jmp/1 T_5.17, 6;
+    %cmpi/u 8, 10, 4;
+    %jmp/1 T_5.18, 6;
+    %cmpi/u 8, 11, 4;
+    %jmp/1 T_5.19, 6;
+    %jmp T_5.20;
+T_5.8 ;
+    %load/v 8, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_5.21, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_5.22, 6;
+    %cmpi/u 8, 3, 4;
+    %jmp/1 T_5.23, 6;
+    %cmpi/u 8, 4, 4;
+    %jmp/1 T_5.24, 6;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.30, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.31;
+T_5.30 ;
+    %mov 13, 2, 4;
+T_5.31 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.27, 8;
+    %load/v 9, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.29, 8;
+T_5.27 ; End of true expr.
+    %load/v 17, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.28, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.29;
+T_5.28 ;
+    %mov 9, 17, 8; Return false value
+T_5.29 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.35, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.36;
+T_5.35 ;
+    %mov 13, 2, 4;
+T_5.36 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.32, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.37, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.38;
+T_5.37 ;
+    %mov 9, 2, 8;
+T_5.38 ;
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.34, 8;
+T_5.32 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.39, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.40;
+T_5.39 ;
+    %mov 17, 2, 8;
+T_5.40 ;
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.33, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.34;
+T_5.33 ;
+    %mov 9, 17, 8; Return false value
+T_5.34 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.44, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.45;
+T_5.44 ;
+    %mov 13, 2, 4;
+T_5.45 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.41, 8;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.46, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.47;
+T_5.46 ;
+    %mov 9, 2, 8;
+T_5.47 ;
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.43, 8;
+T_5.41 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.48, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.49;
+T_5.48 ;
+    %mov 17, 2, 8;
+T_5.49 ;
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.42, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.43;
+T_5.42 ;
+    %mov 9, 17, 8; Return false value
+T_5.43 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.53, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.54;
+T_5.53 ;
+    %mov 13, 2, 4;
+T_5.54 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.50, 8;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.55, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.56;
+T_5.55 ;
+    %mov 9, 2, 8;
+T_5.56 ;
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.52, 8;
+T_5.50 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.57, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.58;
+T_5.57 ;
+    %mov 17, 2, 8;
+T_5.58 ;
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.51, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.52;
+T_5.51 ;
+    %mov 9, 17, 8; Return false value
+T_5.52 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.62, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.63;
+T_5.62 ;
+    %mov 13, 2, 4;
+T_5.63 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.59, 8;
+    %load/v 9, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.61, 8;
+T_5.59 ; End of true expr.
+    %load/v 17, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.60, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.61;
+T_5.60 ;
+    %mov 9, 17, 8; Return false value
+T_5.61 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.67, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.68;
+T_5.67 ;
+    %mov 13, 2, 4;
+T_5.68 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.64, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.69, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.70;
+T_5.69 ;
+    %mov 9, 2, 8;
+T_5.70 ;
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.66, 8;
+T_5.64 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.71, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.72;
+T_5.71 ;
+    %mov 17, 2, 8;
+T_5.72 ;
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.65, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.66;
+T_5.65 ;
+    %mov 9, 17, 8; Return false value
+T_5.66 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.76, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.77;
+T_5.76 ;
+    %mov 13, 2, 4;
+T_5.77 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.73, 8;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.78, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.79;
+T_5.78 ;
+    %mov 9, 2, 8;
+T_5.79 ;
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.75, 8;
+T_5.73 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.80, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.81;
+T_5.80 ;
+    %mov 17, 2, 8;
+T_5.81 ;
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.74, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.75;
+T_5.74 ;
+    %mov 9, 17, 8; Return false value
+T_5.75 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.85, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.86;
+T_5.85 ;
+    %mov 13, 2, 4;
+T_5.86 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.82, 8;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.87, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.88;
+T_5.87 ;
+    %mov 9, 2, 8;
+T_5.88 ;
+; Save base=9 wid=8 in lookaside.
+    %inv 9, 8;
+    %addi 9, 1, 8;
+    %jmp/1  T_5.84, 8;
+T_5.82 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.89, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.90;
+T_5.89 ;
+    %mov 17, 2, 8;
+T_5.90 ;
+; Save base=17 wid=8 in lookaside.
+    %inv 17, 8;
+    %addi 17, 1, 8;
+    %jmp/0  T_5.83, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.84;
+T_5.83 ;
+    %mov 9, 17, 8; Return false value
+T_5.84 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %jmp T_5.26;
+T_5.21 ;
+    %load/v 40, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.94, 4;
+    %load/x1p 45, v0x12735a0_0, 4;
+    %jmp T_5.95;
+T_5.94 ;
+    %mov 45, 2, 4;
+T_5.95 ;
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 40, 41, 1;
+    %jmp/0  T_5.91, 40;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.93, 40;
+T_5.91 ; End of true expr.
+    %load/v 73, v0x11a3160_0, 32;
+    %jmp/0  T_5.92, 40;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.93;
+T_5.92 ;
+    %mov 41, 73, 32; Return false value
+T_5.93 ;
+    %ix/get 3, 41, 32;
+    %load/av 8, v0x1273420, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 8;
+    %load/v 40, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.99, 4;
+    %load/x1p 45, v0x12735a0_0, 4;
+    %jmp T_5.100;
+T_5.99 ;
+    %mov 45, 2, 4;
+T_5.100 ;
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 40, 41, 1;
+    %jmp/0  T_5.96, 40;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.98, 40;
+T_5.96 ; End of true expr.
+    %load/v 73, v0x11a3160_0, 32;
+    %jmp/0  T_5.97, 40;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.98;
+T_5.97 ;
+    %mov 41, 73, 32; Return false value
+T_5.98 ;
+    %ix/get 3, 41, 32;
+    %load/av 8, v0x1273420, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 8;
+    %jmp T_5.26;
+T_5.22 ;
+    %load/v 40, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.104, 4;
+    %load/x1p 45, v0x12735a0_0, 4;
+    %jmp T_5.105;
+T_5.104 ;
+    %mov 45, 2, 4;
+T_5.105 ;
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 40, 41, 1;
+    %jmp/0  T_5.101, 40;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.103, 40;
+T_5.101 ; End of true expr.
+    %load/v 73, v0x11a3160_0, 32;
+    %jmp/0  T_5.102, 40;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.103;
+T_5.102 ;
+    %mov 41, 73, 32; Return false value
+T_5.103 ;
+    %or/r 41, 41, 32;
+    %mov 8, 41, 1;
+    %mov 9, 0, 31;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 8;
+    %load/v 40, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.109, 4;
+    %load/x1p 45, v0x12735a0_0, 4;
+    %jmp T_5.110;
+T_5.109 ;
+    %mov 45, 2, 4;
+T_5.110 ;
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 40, 41, 1;
+    %jmp/0  T_5.106, 40;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.108, 40;
+T_5.106 ; End of true expr.
+    %load/v 73, v0x11a3160_0, 32;
+    %jmp/0  T_5.107, 40;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.108;
+T_5.107 ;
+    %mov 41, 73, 32; Return false value
+T_5.108 ;
+    %or/r 41, 41, 32;
+    %mov 8, 41, 1;
+    %mov 9, 0, 31;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 8;
+    %jmp T_5.26;
+T_5.23 ;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.114, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.115;
+T_5.114 ;
+    %mov 21, 2, 4;
+T_5.115 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.111, 16;
+    %load/v 17, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.113, 16;
+T_5.111 ; End of true expr.
+    %load/v 25, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.112, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.113;
+T_5.112 ;
+    %mov 17, 25, 8; Return false value
+T_5.113 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.119, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.120;
+T_5.119 ;
+    %mov 21, 2, 4;
+T_5.120 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.116, 16;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.121, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.122;
+T_5.121 ;
+    %mov 17, 2, 8;
+T_5.122 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.118, 16;
+T_5.116 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.123, 4;
+    %load/x1p 25, v0x11a3160_0, 8;
+    %jmp T_5.124;
+T_5.123 ;
+    %mov 25, 2, 8;
+T_5.124 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.117, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.118;
+T_5.117 ;
+    %mov 17, 25, 8; Return false value
+T_5.118 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.128, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.129;
+T_5.128 ;
+    %mov 21, 2, 4;
+T_5.129 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.125, 16;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.130, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.131;
+T_5.130 ;
+    %mov 17, 2, 8;
+T_5.131 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.127, 16;
+T_5.125 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.132, 4;
+    %load/x1p 25, v0x11a3160_0, 8;
+    %jmp T_5.133;
+T_5.132 ;
+    %mov 25, 2, 8;
+T_5.133 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.126, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.127;
+T_5.126 ;
+    %mov 17, 25, 8; Return false value
+T_5.127 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.137, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.138;
+T_5.137 ;
+    %mov 21, 2, 4;
+T_5.138 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.134, 16;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.139, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.140;
+T_5.139 ;
+    %mov 17, 2, 8;
+T_5.140 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.136, 16;
+T_5.134 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.141, 4;
+    %load/x1p 25, v0x11a3160_0, 8;
+    %jmp T_5.142;
+T_5.141 ;
+    %mov 25, 2, 8;
+T_5.142 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.135, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.136;
+T_5.135 ;
+    %mov 17, 25, 8; Return false value
+T_5.136 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.146, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.147;
+T_5.146 ;
+    %mov 21, 2, 4;
+T_5.147 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.143, 16;
+    %load/v 17, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.145, 16;
+T_5.143 ; End of true expr.
+    %load/v 25, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.144, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.145;
+T_5.144 ;
+    %mov 17, 25, 8; Return false value
+T_5.145 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.151, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.152;
+T_5.151 ;
+    %mov 21, 2, 4;
+T_5.152 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.148, 16;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.153, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.154;
+T_5.153 ;
+    %mov 17, 2, 8;
+T_5.154 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.150, 16;
+T_5.148 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.155, 4;
+    %load/x1p 25, v0x11a3160_0, 8;
+    %jmp T_5.156;
+T_5.155 ;
+    %mov 25, 2, 8;
+T_5.156 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.149, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.150;
+T_5.149 ;
+    %mov 17, 25, 8; Return false value
+T_5.150 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.160, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.161;
+T_5.160 ;
+    %mov 21, 2, 4;
+T_5.161 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.157, 16;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.162, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.163;
+T_5.162 ;
+    %mov 17, 2, 8;
+T_5.163 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.159, 16;
+T_5.157 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.164, 4;
+    %load/x1p 25, v0x11a3160_0, 8;
+    %jmp T_5.165;
+T_5.164 ;
+    %mov 25, 2, 8;
+T_5.165 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.158, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.159;
+T_5.158 ;
+    %mov 17, 25, 8; Return false value
+T_5.159 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 8;
+    %load/v 16, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.169, 4;
+    %load/x1p 21, v0x12735a0_0, 4;
+    %jmp T_5.170;
+T_5.169 ;
+    %mov 21, 2, 4;
+T_5.170 ;
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 16, 17, 1;
+    %jmp/0  T_5.166, 16;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.171, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.172;
+T_5.171 ;
+    %mov 17, 2, 8;
+T_5.172 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.168, 16;
+T_5.166 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.173, 4;
+    %load/x1p 25, v0x11a3160_0, 8;
+    %jmp T_5.174;
+T_5.173 ;
+    %mov 25, 2, 8;
+T_5.174 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.167, 16;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.168;
+T_5.167 ;
+    %mov 17, 25, 8; Return false value
+T_5.168 ;
+    %or/r 17, 17, 8;
+    %mov 8, 17, 1;
+    %mov 9, 0, 7;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 8;
+    %jmp T_5.26;
+T_5.24 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.178, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.179;
+T_5.178 ;
+    %mov 13, 2, 4;
+T_5.179 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.175, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %inv 9, 32;
+    %addi 9, 1, 32;
+    %jmp/1  T_5.177, 8;
+T_5.175 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %inv 41, 32;
+    %addi 41, 1, 32;
+    %jmp/0  T_5.176, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.177;
+T_5.176 ;
+    %mov 9, 41, 32; Return false value
+T_5.177 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.183, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.184;
+T_5.183 ;
+    %mov 13, 2, 4;
+T_5.184 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.180, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %inv 9, 32;
+    %addi 9, 1, 32;
+    %jmp/1  T_5.182, 8;
+T_5.180 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %inv 41, 32;
+    %addi 41, 1, 32;
+    %jmp/0  T_5.181, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.182;
+T_5.181 ;
+    %mov 9, 41, 32; Return false value
+T_5.182 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 9;
+    %jmp T_5.26;
+T_5.26 ;
+    %jmp T_5.20;
+T_5.9 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.185, 4;
+    %load/x1p 8, v0x12735a0_0, 4;
+    %jmp T_5.186;
+T_5.185 ;
+    %mov 8, 2, 4;
+T_5.186 ;
+; Save base=8 wid=4 in lookaside.
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_5.187, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_5.188, 6;
+    %cmpi/u 8, 3, 4;
+    %jmp/1 T_5.189, 6;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273500_0, 0, 1;
+    %jmp T_5.191;
+T_5.187 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.195, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.196;
+T_5.195 ;
+    %mov 13, 2, 4;
+T_5.196 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.192, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.194, 8;
+T_5.192 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.193, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.194;
+T_5.193 ;
+    %mov 9, 41, 32; Return false value
+T_5.194 ;
+    %ix/getv 3, v0x1272e80_0;
+    %jmp/1 t_2, 4;
+    %ix/load 0, 32, 0; word width
+    %ix/load 1, 0, 0; part off
+    %assign/av v0x1273420, 0, 9;
+t_2 ;
+    %jmp T_5.191;
+T_5.188 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %load/v 13, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.197, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.199, 8;
+T_5.197 ; End of true expr.
+    %load/v 41, v0x1272e80_0, 32;
+    %jmp/0  T_5.198, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.199;
+T_5.198 ;
+    %mov 9, 41, 32; Return false value
+T_5.199 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x12736b0_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272f20_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.206, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.207;
+T_5.206 ;
+    %mov 13, 2, 4;
+T_5.207 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.203, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.205, 8;
+T_5.203 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.204, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.205;
+T_5.204 ;
+    %mov 9, 41, 32; Return false value
+T_5.205 ;
+    %or/r 9, 9, 32;
+    %jmp/0  T_5.200, 9;
+    %mov 8, 0, 1;
+    %jmp/1  T_5.202, 9;
+T_5.200 ; End of true expr.
+    %jmp/0  T_5.201, 9;
+ ; End of false expr.
+    %blend  8, 1, 1; Condition unknown.
+    %jmp  T_5.202;
+T_5.201 ;
+    %mov 8, 1, 1; Return false value
+T_5.202 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273750_0, 0, 8;
+    %jmp T_5.191;
+T_5.189 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %load/v 13, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.208, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.210, 8;
+T_5.208 ; End of true expr.
+    %load/v 41, v0x1272e80_0, 32;
+    %jmp/0  T_5.209, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.210;
+T_5.209 ;
+    %mov 9, 41, 32; Return false value
+T_5.210 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x12736b0_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272f20_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.217, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.218;
+T_5.217 ;
+    %mov 13, 2, 4;
+T_5.218 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.214, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.216, 8;
+T_5.214 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.215, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.216;
+T_5.215 ;
+    %mov 9, 41, 32; Return false value
+T_5.216 ;
+    %or/r 9, 9, 32;
+    %jmp/0  T_5.211, 9;
+    %mov 8, 1, 1;
+    %jmp/1  T_5.213, 9;
+T_5.211 ; End of true expr.
+    %jmp/0  T_5.212, 9;
+ ; End of false expr.
+    %blend  8, 0, 1; Condition unknown.
+    %jmp  T_5.213;
+T_5.212 ;
+    %mov 8, 0, 1; Return false value
+T_5.213 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273750_0, 0, 8;
+    %jmp T_5.191;
+T_5.191 ;
+    %jmp T_5.20;
+T_5.10 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.222, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.223;
+T_5.222 ;
+    %mov 13, 2, 4;
+T_5.223 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.219, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.221, 8;
+T_5.219 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.220, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.221;
+T_5.220 ;
+    %mov 9, 41, 32; Return false value
+T_5.221 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.224, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.226, 8;
+T_5.224 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.225, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.226;
+T_5.225 ;
+    %mov 41, 73, 32; Return false value
+T_5.226 ;
+    %and 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.230, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.231;
+T_5.230 ;
+    %mov 13, 2, 4;
+T_5.231 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.227, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.229, 8;
+T_5.227 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.228, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.229;
+T_5.228 ;
+    %mov 9, 41, 32; Return false value
+T_5.229 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.232, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.234, 8;
+T_5.232 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.233, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.234;
+T_5.233 ;
+    %mov 41, 73, 32; Return false value
+T_5.234 ;
+    %and 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 9;
+    %jmp T_5.20;
+T_5.11 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.238, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.239;
+T_5.238 ;
+    %mov 13, 2, 4;
+T_5.239 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.235, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.237, 8;
+T_5.235 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.236, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.237;
+T_5.236 ;
+    %mov 9, 41, 32; Return false value
+T_5.237 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.240, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.242, 8;
+T_5.240 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.241, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.242;
+T_5.241 ;
+    %mov 41, 73, 32; Return false value
+T_5.242 ;
+    %or 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.246, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.247;
+T_5.246 ;
+    %mov 13, 2, 4;
+T_5.247 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.243, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.245, 8;
+T_5.243 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.244, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.245;
+T_5.244 ;
+    %mov 9, 41, 32; Return false value
+T_5.245 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.248, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.250, 8;
+T_5.248 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.249, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.250;
+T_5.249 ;
+    %mov 41, 73, 32; Return false value
+T_5.250 ;
+    %or 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 9;
+    %jmp T_5.20;
+T_5.12 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.254, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.255;
+T_5.254 ;
+    %mov 13, 2, 4;
+T_5.255 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.251, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.253, 8;
+T_5.251 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.252, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.253;
+T_5.252 ;
+    %mov 9, 41, 32; Return false value
+T_5.253 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.256, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.258, 8;
+T_5.256 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.257, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.258;
+T_5.257 ;
+    %mov 41, 73, 32; Return false value
+T_5.258 ;
+    %xor 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.262, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.263;
+T_5.262 ;
+    %mov 13, 2, 4;
+T_5.263 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.259, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.261, 8;
+T_5.259 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.260, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.261;
+T_5.260 ;
+    %mov 9, 41, 32; Return false value
+T_5.261 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.264, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.266, 8;
+T_5.264 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.265, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.266;
+T_5.265 ;
+    %mov 41, 73, 32; Return false value
+T_5.266 ;
+    %xor 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 9;
+    %jmp T_5.20;
+T_5.13 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.270, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.271;
+T_5.270 ;
+    %mov 13, 2, 4;
+T_5.271 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.267, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.269, 8;
+T_5.267 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.268, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.269;
+T_5.268 ;
+    %mov 9, 41, 32; Return false value
+T_5.269 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.272, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.274, 8;
+T_5.272 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.273, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.274;
+T_5.273 ;
+    %mov 41, 73, 32; Return false value
+T_5.274 ;
+    %add 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.278, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.279;
+T_5.278 ;
+    %mov 13, 2, 4;
+T_5.279 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.275, 8;
+    %load/v 9, v0x1273110_0, 32;
+    %jmp/1  T_5.277, 8;
+T_5.275 ; End of true expr.
+    %load/v 41, v0x11a3160_0, 32;
+    %jmp/0  T_5.276, 8;
+ ; End of false expr.
+    %blend  9, 41, 32; Condition unknown.
+    %jmp  T_5.277;
+T_5.276 ;
+    %mov 9, 41, 32; Return false value
+T_5.277 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %load/v 45, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 8, 41, 1;
+    %jmp/0  T_5.280, 8;
+    %load/v 41, v0x1273110_0, 32;
+    %jmp/1  T_5.282, 8;
+T_5.280 ; End of true expr.
+    %load/v 73, v0x1272e80_0, 32;
+    %jmp/0  T_5.281, 8;
+ ; End of false expr.
+    %blend  41, 73, 32; Condition unknown.
+    %jmp  T_5.282;
+T_5.281 ;
+    %mov 41, 73, 32; Return false value
+T_5.282 ;
+    %add 9, 41, 32;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 9;
+    %jmp T_5.20;
+T_5.14 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.286, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.287;
+T_5.286 ;
+    %mov 13, 2, 4;
+T_5.287 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.283, 8;
+    %load/v 9, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.285, 8;
+T_5.283 ; End of true expr.
+    %load/v 17, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.284, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.285;
+T_5.284 ;
+    %mov 9, 17, 8; Return false value
+T_5.285 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.288, 8;
+    %load/v 17, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.290, 8;
+T_5.288 ; End of true expr.
+    %load/v 25, v0x1272e80_0, 8; Only need 8 of 32 bits
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.289, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.290;
+T_5.289 ;
+    %mov 17, 25, 8; Return false value
+T_5.290 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.294, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.295;
+T_5.294 ;
+    %mov 13, 2, 4;
+T_5.295 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.291, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.296, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.297;
+T_5.296 ;
+    %mov 9, 2, 8;
+T_5.297 ;
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.293, 8;
+T_5.291 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.298, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.299;
+T_5.298 ;
+    %mov 17, 2, 8;
+T_5.299 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.292, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.293;
+T_5.292 ;
+    %mov 9, 17, 8; Return false value
+T_5.293 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.300, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.303, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.304;
+T_5.303 ;
+    %mov 17, 2, 8;
+T_5.304 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.302, 8;
+T_5.300 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.305, 4;
+    %load/x1p 25, v0x1272e80_0, 8;
+    %jmp T_5.306;
+T_5.305 ;
+    %mov 25, 2, 8;
+T_5.306 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.301, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.302;
+T_5.301 ;
+    %mov 17, 25, 8; Return false value
+T_5.302 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.310, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.311;
+T_5.310 ;
+    %mov 13, 2, 4;
+T_5.311 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.307, 8;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.312, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.313;
+T_5.312 ;
+    %mov 9, 2, 8;
+T_5.313 ;
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.309, 8;
+T_5.307 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.314, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.315;
+T_5.314 ;
+    %mov 17, 2, 8;
+T_5.315 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.308, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.309;
+T_5.308 ;
+    %mov 9, 17, 8; Return false value
+T_5.309 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.316, 8;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.319, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.320;
+T_5.319 ;
+    %mov 17, 2, 8;
+T_5.320 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.318, 8;
+T_5.316 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.321, 4;
+    %load/x1p 25, v0x1272e80_0, 8;
+    %jmp T_5.322;
+T_5.321 ;
+    %mov 25, 2, 8;
+T_5.322 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.317, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.318;
+T_5.317 ;
+    %mov 17, 25, 8; Return false value
+T_5.318 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.326, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.327;
+T_5.326 ;
+    %mov 13, 2, 4;
+T_5.327 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.323, 8;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.328, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.329;
+T_5.328 ;
+    %mov 9, 2, 8;
+T_5.329 ;
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.325, 8;
+T_5.323 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.330, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.331;
+T_5.330 ;
+    %mov 17, 2, 8;
+T_5.331 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.324, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.325;
+T_5.324 ;
+    %mov 9, 17, 8; Return false value
+T_5.325 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.332, 8;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.335, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.336;
+T_5.335 ;
+    %mov 17, 2, 8;
+T_5.336 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.334, 8;
+T_5.332 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.337, 4;
+    %load/x1p 25, v0x1272e80_0, 8;
+    %jmp T_5.338;
+T_5.337 ;
+    %mov 25, 2, 8;
+T_5.338 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.333, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.334;
+T_5.333 ;
+    %mov 17, 25, 8; Return false value
+T_5.334 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.342, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.343;
+T_5.342 ;
+    %mov 13, 2, 4;
+T_5.343 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.339, 8;
+    %load/v 9, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.341, 8;
+T_5.339 ; End of true expr.
+    %load/v 17, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.340, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.341;
+T_5.340 ;
+    %mov 9, 17, 8; Return false value
+T_5.341 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.344, 8;
+    %load/v 17, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.346, 8;
+T_5.344 ; End of true expr.
+    %load/v 25, v0x1272e80_0, 8; Only need 8 of 32 bits
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.345, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.346;
+T_5.345 ;
+    %mov 17, 25, 8; Return false value
+T_5.346 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.350, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.351;
+T_5.350 ;
+    %mov 13, 2, 4;
+T_5.351 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.347, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.352, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.353;
+T_5.352 ;
+    %mov 9, 2, 8;
+T_5.353 ;
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.349, 8;
+T_5.347 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.354, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.355;
+T_5.354 ;
+    %mov 17, 2, 8;
+T_5.355 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.348, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.349;
+T_5.348 ;
+    %mov 9, 17, 8; Return false value
+T_5.349 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.356, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.359, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.360;
+T_5.359 ;
+    %mov 17, 2, 8;
+T_5.360 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.358, 8;
+T_5.356 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.361, 4;
+    %load/x1p 25, v0x1272e80_0, 8;
+    %jmp T_5.362;
+T_5.361 ;
+    %mov 25, 2, 8;
+T_5.362 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.357, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.358;
+T_5.357 ;
+    %mov 17, 25, 8; Return false value
+T_5.358 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.366, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.367;
+T_5.366 ;
+    %mov 13, 2, 4;
+T_5.367 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.363, 8;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.368, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.369;
+T_5.368 ;
+    %mov 9, 2, 8;
+T_5.369 ;
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.365, 8;
+T_5.363 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.370, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.371;
+T_5.370 ;
+    %mov 17, 2, 8;
+T_5.371 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.364, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.365;
+T_5.364 ;
+    %mov 9, 17, 8; Return false value
+T_5.365 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.372, 8;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.375, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.376;
+T_5.375 ;
+    %mov 17, 2, 8;
+T_5.376 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.374, 8;
+T_5.372 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.377, 4;
+    %load/x1p 25, v0x1272e80_0, 8;
+    %jmp T_5.378;
+T_5.377 ;
+    %mov 25, 2, 8;
+T_5.378 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.373, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.374;
+T_5.373 ;
+    %mov 17, 25, 8; Return false value
+T_5.374 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.382, 4;
+    %load/x1p 13, v0x12735a0_0, 4;
+    %jmp T_5.383;
+T_5.382 ;
+    %mov 13, 2, 4;
+T_5.383 ;
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.379, 8;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.384, 4;
+    %load/x1p 9, v0x1273110_0, 8;
+    %jmp T_5.385;
+T_5.384 ;
+    %mov 9, 2, 8;
+T_5.385 ;
+; Save base=9 wid=8 in lookaside.
+    %jmp/1  T_5.381, 8;
+T_5.379 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.386, 4;
+    %load/x1p 17, v0x11a3160_0, 8;
+    %jmp T_5.387;
+T_5.386 ;
+    %mov 17, 2, 8;
+T_5.387 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/0  T_5.380, 8;
+ ; End of false expr.
+    %blend  9, 17, 8; Condition unknown.
+    %jmp  T_5.381;
+T_5.380 ;
+    %mov 9, 17, 8; Return false value
+T_5.381 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 17, v0x1272fc0_0, 4;
+    %load/v 21, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=21 wid=4 in lookaside.
+    %cmp/u 17, 21, 4;
+    %mov 17, 4, 1;
+    %and 8, 17, 1;
+    %jmp/0  T_5.388, 8;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.391, 4;
+    %load/x1p 17, v0x1273110_0, 8;
+    %jmp T_5.392;
+T_5.391 ;
+    %mov 17, 2, 8;
+T_5.392 ;
+; Save base=17 wid=8 in lookaside.
+    %jmp/1  T_5.390, 8;
+T_5.388 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.393, 4;
+    %load/x1p 25, v0x1272e80_0, 8;
+    %jmp T_5.394;
+T_5.393 ;
+    %mov 25, 2, 8;
+T_5.394 ;
+; Save base=25 wid=8 in lookaside.
+    %jmp/0  T_5.389, 8;
+ ; End of false expr.
+    %blend  17, 25, 8; Condition unknown.
+    %jmp  T_5.390;
+T_5.389 ;
+    %mov 17, 25, 8; Return false value
+T_5.390 ;
+    %add 9, 17, 8;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 9;
+    %jmp T_5.20;
+T_5.15 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %load/v 13, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.398, 8;
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.401, 4;
+    %load/x1p 9, v0x1273110_0, 1;
+    %jmp T_5.402;
+T_5.401 ;
+    %mov 9, 2, 1;
+T_5.402 ;
+; Save base=9 wid=1 in lookaside.
+    %jmp/1  T_5.400, 8;
+T_5.398 ; End of true expr.
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.403, 4;
+    %load/x1p 10, v0x1272e80_0, 1;
+    %jmp T_5.404;
+T_5.403 ;
+    %mov 10, 2, 1;
+T_5.404 ;
+; Save base=10 wid=1 in lookaside.
+    %jmp/0  T_5.399, 8;
+ ; End of false expr.
+    %blend  9, 10, 1; Condition unknown.
+    %jmp  T_5.400;
+T_5.399 ;
+    %mov 9, 10, 1; Return false value
+T_5.400 ;
+    %jmp/0  T_5.395, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.411, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.412;
+T_5.411 ;
+    %mov 14, 2, 4;
+T_5.412 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 8, 10, 1;
+    %jmp/0  T_5.408, 8;
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.413, 4;
+    %load/x1p 10, v0x1273110_0, 1;
+    %jmp T_5.414;
+T_5.413 ;
+    %mov 10, 2, 1;
+T_5.414 ;
+; Save base=10 wid=1 in lookaside.
+    %jmp/1  T_5.410, 8;
+T_5.408 ; End of true expr.
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.415, 4;
+    %load/x1p 11, v0x11a3160_0, 1;
+    %jmp T_5.416;
+T_5.415 ;
+    %mov 11, 2, 1;
+T_5.416 ;
+; Save base=11 wid=1 in lookaside.
+    %jmp/0  T_5.409, 8;
+ ; End of false expr.
+    %blend  10, 11, 1; Condition unknown.
+    %jmp  T_5.410;
+T_5.409 ;
+    %mov 10, 11, 1; Return false value
+T_5.410 ;
+    %jmp/0  T_5.405, 10;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 11, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.420, 4;
+    %load/x1p 15, v0x12735a0_0, 4;
+    %jmp T_5.421;
+T_5.420 ;
+    %mov 15, 2, 4;
+T_5.421 ;
+; Save base=15 wid=4 in lookaside.
+    %cmp/u 11, 15, 4;
+    %mov 11, 4, 1;
+    %and 8, 11, 1;
+    %jmp/0  T_5.417, 8;
+    %load/v 11, v0x1273110_0, 32;
+    %inv 11, 32;
+    %addi 11, 1, 32;
+    %jmp/1  T_5.419, 8;
+T_5.417 ; End of true expr.
+    %load/v 43, v0x11a3160_0, 32;
+    %inv 43, 32;
+    %addi 43, 1, 32;
+    %jmp/0  T_5.418, 8;
+ ; End of false expr.
+    %blend  11, 43, 32; Condition unknown.
+    %jmp  T_5.419;
+T_5.418 ;
+    %mov 11, 43, 32; Return false value
+T_5.419 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 43, v0x1272fc0_0, 4;
+    %load/v 47, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=47 wid=4 in lookaside.
+    %cmp/u 43, 47, 4;
+    %mov 43, 4, 1;
+    %and 8, 43, 1;
+    %jmp/0  T_5.422, 8;
+    %load/v 43, v0x1273110_0, 32;
+    %inv 43, 32;
+    %addi 43, 1, 32;
+    %jmp/1  T_5.424, 8;
+T_5.422 ; End of true expr.
+    %load/v 75, v0x1272e80_0, 32;
+    %inv 75, 32;
+    %addi 75, 1, 32;
+    %jmp/0  T_5.423, 8;
+ ; End of false expr.
+    %blend  43, 75, 32; Condition unknown.
+    %jmp  T_5.424;
+T_5.423 ;
+    %mov 43, 75, 32; Return false value
+T_5.424 ;
+    %ix/get 0, 43, 32;
+    %shiftr/i0  11, 32;
+    %inv 11, 32;
+    %addi 11, 1, 32;
+    %jmp/1  T_5.407, 10;
+T_5.405 ; End of true expr.
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 43, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.428, 4;
+    %load/x1p 47, v0x12735a0_0, 4;
+    %jmp T_5.429;
+T_5.428 ;
+    %mov 47, 2, 4;
+T_5.429 ;
+; Save base=47 wid=4 in lookaside.
+    %cmp/u 43, 47, 4;
+    %mov 43, 4, 1;
+    %and 8, 43, 1;
+    %jmp/0  T_5.425, 8;
+    %load/v 43, v0x1273110_0, 32;
+    %jmp/1  T_5.427, 8;
+T_5.425 ; End of true expr.
+    %load/v 75, v0x11a3160_0, 32;
+    %jmp/0  T_5.426, 8;
+ ; End of false expr.
+    %blend  43, 75, 32; Condition unknown.
+    %jmp  T_5.427;
+T_5.426 ;
+    %mov 43, 75, 32; Return false value
+T_5.427 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 75, v0x1272fc0_0, 4;
+    %load/v 79, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=79 wid=4 in lookaside.
+    %cmp/u 75, 79, 4;
+    %mov 75, 4, 1;
+    %and 8, 75, 1;
+    %jmp/0  T_5.430, 8;
+    %load/v 75, v0x1273110_0, 32;
+    %inv 75, 32;
+    %addi 75, 1, 32;
+    %jmp/1  T_5.432, 8;
+T_5.430 ; End of true expr.
+    %load/v 107, v0x1272e80_0, 32;
+    %inv 107, 32;
+    %addi 107, 1, 32;
+    %jmp/0  T_5.431, 8;
+ ; End of false expr.
+    %blend  75, 107, 32; Condition unknown.
+    %jmp  T_5.432;
+T_5.431 ;
+    %mov 75, 107, 32; Return false value
+T_5.432 ;
+    %ix/get 0, 75, 32;
+    %shiftr/i0  43, 32;
+    %jmp/0  T_5.406, 10;
+ ; End of false expr.
+    %blend  11, 43, 32; Condition unknown.
+    %jmp  T_5.407;
+T_5.406 ;
+    %mov 11, 43, 32; Return false value
+T_5.407 ;
+    %jmp/1  T_5.397, 9;
+T_5.395 ; End of true expr.
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 43, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.436, 4;
+    %load/x1p 47, v0x12735a0_0, 4;
+    %jmp T_5.437;
+T_5.436 ;
+    %mov 47, 2, 4;
+T_5.437 ;
+; Save base=47 wid=4 in lookaside.
+    %cmp/u 43, 47, 4;
+    %mov 10, 4, 1;
+    %and 8, 10, 1;
+    %jmp/0  T_5.433, 8;
+    %load/v 43, v0x1273110_0, 32;
+    %jmp/1  T_5.435, 8;
+T_5.433 ; End of true expr.
+    %load/v 75, v0x11a3160_0, 32;
+    %jmp/0  T_5.434, 8;
+ ; End of false expr.
+    %blend  43, 75, 32; Condition unknown.
+    %jmp  T_5.435;
+T_5.434 ;
+    %mov 43, 75, 32; Return false value
+T_5.435 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 75, v0x1272fc0_0, 4;
+    %load/v 79, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=79 wid=4 in lookaside.
+    %cmp/u 75, 79, 4;
+    %mov 10, 4, 1;
+    %and 8, 10, 1;
+    %jmp/0  T_5.438, 8;
+    %load/v 75, v0x1273110_0, 32;
+    %jmp/1  T_5.440, 8;
+T_5.438 ; End of true expr.
+    %load/v 107, v0x1272e80_0, 32;
+    %jmp/0  T_5.439, 8;
+ ; End of false expr.
+    %blend  75, 107, 32; Condition unknown.
+    %jmp  T_5.440;
+T_5.439 ;
+    %mov 75, 107, 32; Return false value
+T_5.440 ;
+    %ix/get 0, 75, 32;
+    %shiftl/i0  43, 32;
+    %jmp/0  T_5.396, 9;
+ ; End of false expr.
+    %blend  11, 43, 32; Condition unknown.
+    %jmp  T_5.397;
+T_5.396 ;
+    %mov 11, 43, 32; Return false value
+T_5.397 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 11;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 9, v0x1272fc0_0, 4;
+    %load/v 13, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=13 wid=4 in lookaside.
+    %cmp/u 9, 13, 4;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0  T_5.444, 8;
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.447, 4;
+    %load/x1p 9, v0x1273110_0, 1;
+    %jmp T_5.448;
+T_5.447 ;
+    %mov 9, 2, 1;
+T_5.448 ;
+; Save base=9 wid=1 in lookaside.
+    %jmp/1  T_5.446, 8;
+T_5.444 ; End of true expr.
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.449, 4;
+    %load/x1p 10, v0x1272e80_0, 1;
+    %jmp T_5.450;
+T_5.449 ;
+    %mov 10, 2, 1;
+T_5.450 ;
+; Save base=10 wid=1 in lookaside.
+    %jmp/0  T_5.445, 8;
+ ; End of false expr.
+    %blend  9, 10, 1; Condition unknown.
+    %jmp  T_5.446;
+T_5.445 ;
+    %mov 9, 10, 1; Return false value
+T_5.446 ;
+    %jmp/0  T_5.441, 9;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.457, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.458;
+T_5.457 ;
+    %mov 14, 2, 4;
+T_5.458 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 8, 10, 1;
+    %jmp/0  T_5.454, 8;
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.459, 4;
+    %load/x1p 10, v0x1273110_0, 1;
+    %jmp T_5.460;
+T_5.459 ;
+    %mov 10, 2, 1;
+T_5.460 ;
+; Save base=10 wid=1 in lookaside.
+    %jmp/1  T_5.456, 8;
+T_5.454 ; End of true expr.
+    %ix/load 1, 31, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.461, 4;
+    %load/x1p 11, v0x11a3160_0, 1;
+    %jmp T_5.462;
+T_5.461 ;
+    %mov 11, 2, 1;
+T_5.462 ;
+; Save base=11 wid=1 in lookaside.
+    %jmp/0  T_5.455, 8;
+ ; End of false expr.
+    %blend  10, 11, 1; Condition unknown.
+    %jmp  T_5.456;
+T_5.455 ;
+    %mov 10, 11, 1; Return false value
+T_5.456 ;
+    %jmp/0  T_5.451, 10;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 11, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.466, 4;
+    %load/x1p 15, v0x12735a0_0, 4;
+    %jmp T_5.467;
+T_5.466 ;
+    %mov 15, 2, 4;
+T_5.467 ;
+; Save base=15 wid=4 in lookaside.
+    %cmp/u 11, 15, 4;
+    %mov 11, 4, 1;
+    %and 8, 11, 1;
+    %jmp/0  T_5.463, 8;
+    %load/v 11, v0x1273110_0, 32;
+    %inv 11, 32;
+    %addi 11, 1, 32;
+    %jmp/1  T_5.465, 8;
+T_5.463 ; End of true expr.
+    %load/v 43, v0x11a3160_0, 32;
+    %inv 43, 32;
+    %addi 43, 1, 32;
+    %jmp/0  T_5.464, 8;
+ ; End of false expr.
+    %blend  11, 43, 32; Condition unknown.
+    %jmp  T_5.465;
+T_5.464 ;
+    %mov 11, 43, 32; Return false value
+T_5.465 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 43, v0x1272fc0_0, 4;
+    %load/v 47, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=47 wid=4 in lookaside.
+    %cmp/u 43, 47, 4;
+    %mov 43, 4, 1;
+    %and 8, 43, 1;
+    %jmp/0  T_5.468, 8;
+    %load/v 43, v0x1273110_0, 32;
+    %inv 43, 32;
+    %addi 43, 1, 32;
+    %jmp/1  T_5.470, 8;
+T_5.468 ; End of true expr.
+    %load/v 75, v0x1272e80_0, 32;
+    %inv 75, 32;
+    %addi 75, 1, 32;
+    %jmp/0  T_5.469, 8;
+ ; End of false expr.
+    %blend  43, 75, 32; Condition unknown.
+    %jmp  T_5.470;
+T_5.469 ;
+    %mov 43, 75, 32; Return false value
+T_5.470 ;
+    %ix/get 0, 43, 32;
+    %shiftr/i0  11, 32;
+    %inv 11, 32;
+    %addi 11, 1, 32;
+    %jmp/1  T_5.453, 10;
+T_5.451 ; End of true expr.
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 43, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.474, 4;
+    %load/x1p 47, v0x12735a0_0, 4;
+    %jmp T_5.475;
+T_5.474 ;
+    %mov 47, 2, 4;
+T_5.475 ;
+; Save base=47 wid=4 in lookaside.
+    %cmp/u 43, 47, 4;
+    %mov 43, 4, 1;
+    %and 8, 43, 1;
+    %jmp/0  T_5.471, 8;
+    %load/v 43, v0x1273110_0, 32;
+    %jmp/1  T_5.473, 8;
+T_5.471 ; End of true expr.
+    %load/v 75, v0x11a3160_0, 32;
+    %jmp/0  T_5.472, 8;
+ ; End of false expr.
+    %blend  43, 75, 32; Condition unknown.
+    %jmp  T_5.473;
+T_5.472 ;
+    %mov 43, 75, 32; Return false value
+T_5.473 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 75, v0x1272fc0_0, 4;
+    %load/v 79, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=79 wid=4 in lookaside.
+    %cmp/u 75, 79, 4;
+    %mov 75, 4, 1;
+    %and 8, 75, 1;
+    %jmp/0  T_5.476, 8;
+    %load/v 75, v0x1273110_0, 32;
+    %inv 75, 32;
+    %addi 75, 1, 32;
+    %jmp/1  T_5.478, 8;
+T_5.476 ; End of true expr.
+    %load/v 107, v0x1272e80_0, 32;
+    %inv 107, 32;
+    %addi 107, 1, 32;
+    %jmp/0  T_5.477, 8;
+ ; End of false expr.
+    %blend  75, 107, 32; Condition unknown.
+    %jmp  T_5.478;
+T_5.477 ;
+    %mov 75, 107, 32; Return false value
+T_5.478 ;
+    %ix/get 0, 75, 32;
+    %shiftr/i0  43, 32;
+    %jmp/0  T_5.452, 10;
+ ; End of false expr.
+    %blend  11, 43, 32; Condition unknown.
+    %jmp  T_5.453;
+T_5.452 ;
+    %mov 11, 43, 32; Return false value
+T_5.453 ;
+    %jmp/1  T_5.443, 9;
+T_5.441 ; End of true expr.
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 43, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.482, 4;
+    %load/x1p 47, v0x12735a0_0, 4;
+    %jmp T_5.483;
+T_5.482 ;
+    %mov 47, 2, 4;
+T_5.483 ;
+; Save base=47 wid=4 in lookaside.
+    %cmp/u 43, 47, 4;
+    %mov 10, 4, 1;
+    %and 8, 10, 1;
+    %jmp/0  T_5.479, 8;
+    %load/v 43, v0x1273110_0, 32;
+    %jmp/1  T_5.481, 8;
+T_5.479 ; End of true expr.
+    %load/v 75, v0x11a3160_0, 32;
+    %jmp/0  T_5.480, 8;
+ ; End of false expr.
+    %blend  43, 75, 32; Condition unknown.
+    %jmp  T_5.481;
+T_5.480 ;
+    %mov 43, 75, 32; Return false value
+T_5.481 ;
+    %load/v 8, v0x1273910_0, 1;
+    %load/v 75, v0x1272fc0_0, 4;
+    %load/v 79, v0x12735a0_0, 4; Only need 4 of 16 bits
+; Save base=79 wid=4 in lookaside.
+    %cmp/u 75, 79, 4;
+    %mov 10, 4, 1;
+    %and 8, 10, 1;
+    %jmp/0  T_5.484, 8;
+    %load/v 75, v0x1273110_0, 32;
+    %jmp/1  T_5.486, 8;
+T_5.484 ; End of true expr.
+    %load/v 107, v0x1272e80_0, 32;
+    %jmp/0  T_5.485, 8;
+ ; End of false expr.
+    %blend  75, 107, 32; Condition unknown.
+    %jmp  T_5.486;
+T_5.485 ;
+    %mov 75, 107, 32; Return false value
+T_5.486 ;
+    %ix/get 0, 75, 32;
+    %shiftl/i0  43, 32;
+    %jmp/0  T_5.442, 9;
+ ; End of false expr.
+    %blend  11, 43, 32; Condition unknown.
+    %jmp  T_5.443;
+T_5.442 ;
+    %mov 11, 43, 32; Return false value
+T_5.443 ;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 11;
+    %jmp T_5.20;
+T_5.16 ;
+    %load/v 8, v0x1273290_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.487, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.493, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.494;
+T_5.493 ;
+    %mov 14, 2, 4;
+T_5.494 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.490, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.492, 9;
+T_5.490 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.491, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.492;
+T_5.491 ;
+    %mov 10, 18, 8; Return false value
+T_5.492 ;
+    %jmp/1  T_5.489, 8;
+T_5.487 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.498, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.499;
+T_5.498 ;
+    %mov 22, 2, 4;
+T_5.499 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.495, 9;
+    %load/v 18, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.497, 9;
+T_5.495 ; End of true expr.
+    %load/v 26, v0x1272e80_0, 8; Only need 8 of 32 bits
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.496, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.497;
+T_5.496 ;
+    %mov 18, 26, 8; Return false value
+T_5.497 ;
+    %jmp/0  T_5.488, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.489;
+T_5.488 ;
+    %mov 10, 18, 8; Return false value
+T_5.489 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 10;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.503, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.504;
+T_5.503 ;
+    %mov 8, 2, 1;
+T_5.504 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.500, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.508, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.509;
+T_5.508 ;
+    %mov 14, 2, 4;
+T_5.509 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.505, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.507, 9;
+T_5.505 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.506, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.507;
+T_5.506 ;
+    %mov 10, 18, 8; Return false value
+T_5.507 ;
+    %jmp/1  T_5.502, 8;
+T_5.500 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.513, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.514;
+T_5.513 ;
+    %mov 22, 2, 4;
+T_5.514 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.510, 9;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.515, 4;
+    %load/x1p 18, v0x1273110_0, 8;
+    %jmp T_5.516;
+T_5.515 ;
+    %mov 18, 2, 8;
+T_5.516 ;
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.512, 9;
+T_5.510 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.517, 4;
+    %load/x1p 26, v0x1272e80_0, 8;
+    %jmp T_5.518;
+T_5.517 ;
+    %mov 26, 2, 8;
+T_5.518 ;
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.511, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.512;
+T_5.511 ;
+    %mov 18, 26, 8; Return false value
+T_5.512 ;
+    %jmp/0  T_5.501, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.502;
+T_5.501 ;
+    %mov 10, 18, 8; Return false value
+T_5.502 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 10;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.522, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.523;
+T_5.522 ;
+    %mov 8, 2, 1;
+T_5.523 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.519, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.527, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.528;
+T_5.527 ;
+    %mov 14, 2, 4;
+T_5.528 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.524, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.526, 9;
+T_5.524 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.525, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.526;
+T_5.525 ;
+    %mov 10, 18, 8; Return false value
+T_5.526 ;
+    %jmp/1  T_5.521, 8;
+T_5.519 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.532, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.533;
+T_5.532 ;
+    %mov 22, 2, 4;
+T_5.533 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.529, 9;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.534, 4;
+    %load/x1p 18, v0x1273110_0, 8;
+    %jmp T_5.535;
+T_5.534 ;
+    %mov 18, 2, 8;
+T_5.535 ;
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.531, 9;
+T_5.529 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.536, 4;
+    %load/x1p 26, v0x1272e80_0, 8;
+    %jmp T_5.537;
+T_5.536 ;
+    %mov 26, 2, 8;
+T_5.537 ;
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.530, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.531;
+T_5.530 ;
+    %mov 18, 26, 8; Return false value
+T_5.531 ;
+    %jmp/0  T_5.520, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.521;
+T_5.520 ;
+    %mov 10, 18, 8; Return false value
+T_5.521 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 10;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.541, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.542;
+T_5.541 ;
+    %mov 8, 2, 1;
+T_5.542 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.538, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.546, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.547;
+T_5.546 ;
+    %mov 14, 2, 4;
+T_5.547 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.543, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.545, 9;
+T_5.543 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.544, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.545;
+T_5.544 ;
+    %mov 10, 18, 8; Return false value
+T_5.545 ;
+    %jmp/1  T_5.540, 8;
+T_5.538 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.551, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.552;
+T_5.551 ;
+    %mov 22, 2, 4;
+T_5.552 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.548, 9;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.553, 4;
+    %load/x1p 18, v0x1273110_0, 8;
+    %jmp T_5.554;
+T_5.553 ;
+    %mov 18, 2, 8;
+T_5.554 ;
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.550, 9;
+T_5.548 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.555, 4;
+    %load/x1p 26, v0x1272e80_0, 8;
+    %jmp T_5.556;
+T_5.555 ;
+    %mov 26, 2, 8;
+T_5.556 ;
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.549, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.550;
+T_5.549 ;
+    %mov 18, 26, 8; Return false value
+T_5.550 ;
+    %jmp/0  T_5.539, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.540;
+T_5.539 ;
+    %mov 10, 18, 8; Return false value
+T_5.540 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273070_0, 0, 10;
+    %load/v 8, v0x1273290_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.557, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.563, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.564;
+T_5.563 ;
+    %mov 14, 2, 4;
+T_5.564 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.560, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.562, 9;
+T_5.560 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.561, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.562;
+T_5.561 ;
+    %mov 10, 18, 8; Return false value
+T_5.562 ;
+    %jmp/1  T_5.559, 8;
+T_5.557 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.568, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.569;
+T_5.568 ;
+    %mov 22, 2, 4;
+T_5.569 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.565, 9;
+    %load/v 18, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.567, 9;
+T_5.565 ; End of true expr.
+    %load/v 26, v0x1272e80_0, 8; Only need 8 of 32 bits
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.566, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.567;
+T_5.566 ;
+    %mov 18, 26, 8; Return false value
+T_5.567 ;
+    %jmp/0  T_5.558, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.559;
+T_5.558 ;
+    %mov 10, 18, 8; Return false value
+T_5.559 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 0, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 10;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.573, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.574;
+T_5.573 ;
+    %mov 8, 2, 1;
+T_5.574 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.570, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.578, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.579;
+T_5.578 ;
+    %mov 14, 2, 4;
+T_5.579 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.575, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.577, 9;
+T_5.575 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.576, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.577;
+T_5.576 ;
+    %mov 10, 18, 8; Return false value
+T_5.577 ;
+    %jmp/1  T_5.572, 8;
+T_5.570 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.583, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.584;
+T_5.583 ;
+    %mov 22, 2, 4;
+T_5.584 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.580, 9;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.585, 4;
+    %load/x1p 18, v0x1273110_0, 8;
+    %jmp T_5.586;
+T_5.585 ;
+    %mov 18, 2, 8;
+T_5.586 ;
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.582, 9;
+T_5.580 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.587, 4;
+    %load/x1p 26, v0x1272e80_0, 8;
+    %jmp T_5.588;
+T_5.587 ;
+    %mov 26, 2, 8;
+T_5.588 ;
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.581, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.582;
+T_5.581 ;
+    %mov 18, 26, 8; Return false value
+T_5.582 ;
+    %jmp/0  T_5.571, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.572;
+T_5.571 ;
+    %mov 10, 18, 8; Return false value
+T_5.572 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 8, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 10;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.592, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.593;
+T_5.592 ;
+    %mov 8, 2, 1;
+T_5.593 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.589, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.597, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.598;
+T_5.597 ;
+    %mov 14, 2, 4;
+T_5.598 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.594, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.596, 9;
+T_5.594 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.595, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.596;
+T_5.595 ;
+    %mov 10, 18, 8; Return false value
+T_5.596 ;
+    %jmp/1  T_5.591, 8;
+T_5.589 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.602, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.603;
+T_5.602 ;
+    %mov 22, 2, 4;
+T_5.603 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.599, 9;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.604, 4;
+    %load/x1p 18, v0x1273110_0, 8;
+    %jmp T_5.605;
+T_5.604 ;
+    %mov 18, 2, 8;
+T_5.605 ;
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.601, 9;
+T_5.599 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.606, 4;
+    %load/x1p 26, v0x1272e80_0, 8;
+    %jmp T_5.607;
+T_5.606 ;
+    %mov 26, 2, 8;
+T_5.607 ;
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.600, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.601;
+T_5.600 ;
+    %mov 18, 26, 8; Return false value
+T_5.601 ;
+    %jmp/0  T_5.590, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.591;
+T_5.590 ;
+    %mov 10, 18, 8; Return false value
+T_5.591 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 16, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 10;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.611, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.612;
+T_5.611 ;
+    %mov 8, 2, 1;
+T_5.612 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.608, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.616, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.617;
+T_5.616 ;
+    %mov 14, 2, 4;
+T_5.617 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.613, 9;
+    %load/v 10, v0x1273110_0, 8; Only need 8 of 32 bits
+; Save base=10 wid=8 in lookaside.
+    %jmp/1  T_5.615, 9;
+T_5.613 ; End of true expr.
+    %load/v 18, v0x11a3160_0, 8; Only need 8 of 32 bits
+; Save base=18 wid=8 in lookaside.
+    %jmp/0  T_5.614, 9;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.615;
+T_5.614 ;
+    %mov 10, 18, 8; Return false value
+T_5.615 ;
+    %jmp/1  T_5.610, 8;
+T_5.608 ; End of true expr.
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 18, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.621, 4;
+    %load/x1p 22, v0x12735a0_0, 4;
+    %jmp T_5.622;
+T_5.621 ;
+    %mov 22, 2, 4;
+T_5.622 ;
+; Save base=22 wid=4 in lookaside.
+    %cmp/u 18, 22, 4;
+    %mov 18, 4, 1;
+    %and 9, 18, 1;
+    %jmp/0  T_5.618, 9;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.623, 4;
+    %load/x1p 18, v0x1273110_0, 8;
+    %jmp T_5.624;
+T_5.623 ;
+    %mov 18, 2, 8;
+T_5.624 ;
+; Save base=18 wid=8 in lookaside.
+    %jmp/1  T_5.620, 9;
+T_5.618 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.625, 4;
+    %load/x1p 26, v0x1272e80_0, 8;
+    %jmp T_5.626;
+T_5.625 ;
+    %mov 26, 2, 8;
+T_5.626 ;
+; Save base=26 wid=8 in lookaside.
+    %jmp/0  T_5.619, 9;
+ ; End of false expr.
+    %blend  18, 26, 8; Condition unknown.
+    %jmp  T_5.620;
+T_5.619 ;
+    %mov 18, 26, 8; Return false value
+T_5.620 ;
+    %jmp/0  T_5.609, 8;
+ ; End of false expr.
+    %blend  10, 18, 8; Condition unknown.
+    %jmp  T_5.610;
+T_5.609 ;
+    %mov 10, 18, 8; Return false value
+T_5.610 ;
+    %ix/load 0, 8, 0;
+    %ix/load 1, 24, 0;
+    %assign/v0/x1 v0x1273110_0, 0, 10;
+    %jmp T_5.20;
+T_5.17 ;
+    %load/v 8, v0x1273290_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.627, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.633, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.634;
+T_5.633 ;
+    %mov 14, 2, 4;
+T_5.634 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.630, 9;
+    %load/v 10, v0x1273110_0, 8; Select 8 out of 32 bits
+    %mov 18, 0, 27;
+    %jmp/1  T_5.632, 9;
+T_5.630 ; End of true expr.
+    %load/v 45, v0x11a3160_0, 8; Select 8 out of 32 bits
+    %mov 53, 0, 27;
+    %jmp/0  T_5.631, 9;
+ ; End of false expr.
+    %blend  10, 45, 35; Condition unknown.
+    %jmp  T_5.632;
+T_5.631 ;
+    %mov 10, 45, 35; Return false value
+T_5.632 ;
+    %jmp/1  T_5.629, 8;
+T_5.627 ; End of true expr.
+    %jmp/0  T_5.628, 8;
+ ; End of false expr.
+    %blend  10, 0, 35; Condition unknown.
+    %jmp  T_5.629;
+T_5.628 ;
+    %mov 10, 0, 35; Return false value
+T_5.629 ;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.638, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.639;
+T_5.638 ;
+    %mov 8, 2, 1;
+T_5.639 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.635, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 45, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.643, 4;
+    %load/x1p 49, v0x12735a0_0, 4;
+    %jmp T_5.644;
+T_5.643 ;
+    %mov 49, 2, 4;
+T_5.644 ;
+; Save base=49 wid=4 in lookaside.
+    %cmp/u 45, 49, 4;
+    %mov 45, 4, 1;
+    %and 9, 45, 1;
+    %jmp/0  T_5.640, 9;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.645, 4;
+    %load/x1p 80, v0x1273110_0, 8;
+    %jmp T_5.646;
+T_5.645 ;
+    %mov 80, 2, 8;
+T_5.646 ;
+    %mov 45, 80, 8; Move signal select into place
+    %mov 53, 0, 27;
+    %jmp/1  T_5.642, 9;
+T_5.640 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.647, 4;
+    %load/x1p 115, v0x11a3160_0, 8;
+    %jmp T_5.648;
+T_5.647 ;
+    %mov 115, 2, 8;
+T_5.648 ;
+    %mov 80, 115, 8; Move signal select into place
+    %mov 88, 0, 27;
+    %jmp/0  T_5.641, 9;
+ ; End of false expr.
+    %blend  45, 80, 35; Condition unknown.
+    %jmp  T_5.642;
+T_5.641 ;
+    %mov 45, 80, 35; Return false value
+T_5.642 ;
+    %jmp/1  T_5.637, 8;
+T_5.635 ; End of true expr.
+    %jmp/0  T_5.636, 8;
+ ; End of false expr.
+    %blend  45, 0, 35; Condition unknown.
+    %jmp  T_5.637;
+T_5.636 ;
+    %mov 45, 0, 35; Return false value
+T_5.637 ;
+    %add 10, 45, 35;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.652, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.653;
+T_5.652 ;
+    %mov 8, 2, 1;
+T_5.653 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.649, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 45, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.657, 4;
+    %load/x1p 49, v0x12735a0_0, 4;
+    %jmp T_5.658;
+T_5.657 ;
+    %mov 49, 2, 4;
+T_5.658 ;
+; Save base=49 wid=4 in lookaside.
+    %cmp/u 45, 49, 4;
+    %mov 45, 4, 1;
+    %and 9, 45, 1;
+    %jmp/0  T_5.654, 9;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.659, 4;
+    %load/x1p 80, v0x1273110_0, 8;
+    %jmp T_5.660;
+T_5.659 ;
+    %mov 80, 2, 8;
+T_5.660 ;
+    %mov 45, 80, 8; Move signal select into place
+    %mov 53, 0, 27;
+    %jmp/1  T_5.656, 9;
+T_5.654 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.661, 4;
+    %load/x1p 115, v0x11a3160_0, 8;
+    %jmp T_5.662;
+T_5.661 ;
+    %mov 115, 2, 8;
+T_5.662 ;
+    %mov 80, 115, 8; Move signal select into place
+    %mov 88, 0, 27;
+    %jmp/0  T_5.655, 9;
+ ; End of false expr.
+    %blend  45, 80, 35; Condition unknown.
+    %jmp  T_5.656;
+T_5.655 ;
+    %mov 45, 80, 35; Return false value
+T_5.656 ;
+    %jmp/1  T_5.651, 8;
+T_5.649 ; End of true expr.
+    %jmp/0  T_5.650, 8;
+ ; End of false expr.
+    %blend  45, 0, 35; Condition unknown.
+    %jmp  T_5.651;
+T_5.650 ;
+    %mov 45, 0, 35; Return false value
+T_5.651 ;
+    %add 10, 45, 35;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.666, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.667;
+T_5.666 ;
+    %mov 8, 2, 1;
+T_5.667 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.663, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 45, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.671, 4;
+    %load/x1p 49, v0x12735a0_0, 4;
+    %jmp T_5.672;
+T_5.671 ;
+    %mov 49, 2, 4;
+T_5.672 ;
+; Save base=49 wid=4 in lookaside.
+    %cmp/u 45, 49, 4;
+    %mov 45, 4, 1;
+    %and 9, 45, 1;
+    %jmp/0  T_5.668, 9;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.673, 4;
+    %load/x1p 80, v0x1273110_0, 8;
+    %jmp T_5.674;
+T_5.673 ;
+    %mov 80, 2, 8;
+T_5.674 ;
+    %mov 45, 80, 8; Move signal select into place
+    %mov 53, 0, 27;
+    %jmp/1  T_5.670, 9;
+T_5.668 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.675, 4;
+    %load/x1p 115, v0x11a3160_0, 8;
+    %jmp T_5.676;
+T_5.675 ;
+    %mov 115, 2, 8;
+T_5.676 ;
+    %mov 80, 115, 8; Move signal select into place
+    %mov 88, 0, 27;
+    %jmp/0  T_5.669, 9;
+ ; End of false expr.
+    %blend  45, 80, 35; Condition unknown.
+    %jmp  T_5.670;
+T_5.669 ;
+    %mov 45, 80, 35; Return false value
+T_5.670 ;
+    %jmp/1  T_5.665, 8;
+T_5.663 ; End of true expr.
+    %jmp/0  T_5.664, 8;
+ ; End of false expr.
+    %blend  45, 0, 35; Condition unknown.
+    %jmp  T_5.665;
+T_5.664 ;
+    %mov 45, 0, 35; Return false value
+T_5.665 ;
+    %add 10, 45, 35;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 10;
+    %load/v 8, v0x1273290_0, 1; Only need 1 of 4 bits
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.677, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 10, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.683, 4;
+    %load/x1p 14, v0x12735a0_0, 4;
+    %jmp T_5.684;
+T_5.683 ;
+    %mov 14, 2, 4;
+T_5.684 ;
+; Save base=14 wid=4 in lookaside.
+    %cmp/u 10, 14, 4;
+    %mov 10, 4, 1;
+    %and 9, 10, 1;
+    %jmp/0  T_5.680, 9;
+    %load/v 10, v0x1273110_0, 8; Select 8 out of 32 bits
+    %mov 18, 0, 27;
+    %jmp/1  T_5.682, 9;
+T_5.680 ; End of true expr.
+    %load/v 45, v0x11a3160_0, 8; Select 8 out of 32 bits
+    %mov 53, 0, 27;
+    %jmp/0  T_5.681, 9;
+ ; End of false expr.
+    %blend  10, 45, 35; Condition unknown.
+    %jmp  T_5.682;
+T_5.681 ;
+    %mov 10, 45, 35; Return false value
+T_5.682 ;
+    %jmp/1  T_5.679, 8;
+T_5.677 ; End of true expr.
+    %jmp/0  T_5.678, 8;
+ ; End of false expr.
+    %blend  10, 0, 35; Condition unknown.
+    %jmp  T_5.679;
+T_5.678 ;
+    %mov 10, 0, 35; Return false value
+T_5.679 ;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.688, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.689;
+T_5.688 ;
+    %mov 8, 2, 1;
+T_5.689 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.685, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 45, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.693, 4;
+    %load/x1p 49, v0x12735a0_0, 4;
+    %jmp T_5.694;
+T_5.693 ;
+    %mov 49, 2, 4;
+T_5.694 ;
+; Save base=49 wid=4 in lookaside.
+    %cmp/u 45, 49, 4;
+    %mov 45, 4, 1;
+    %and 9, 45, 1;
+    %jmp/0  T_5.690, 9;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.695, 4;
+    %load/x1p 80, v0x1273110_0, 8;
+    %jmp T_5.696;
+T_5.695 ;
+    %mov 80, 2, 8;
+T_5.696 ;
+    %mov 45, 80, 8; Move signal select into place
+    %mov 53, 0, 27;
+    %jmp/1  T_5.692, 9;
+T_5.690 ; End of true expr.
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.697, 4;
+    %load/x1p 115, v0x11a3160_0, 8;
+    %jmp T_5.698;
+T_5.697 ;
+    %mov 115, 2, 8;
+T_5.698 ;
+    %mov 80, 115, 8; Move signal select into place
+    %mov 88, 0, 27;
+    %jmp/0  T_5.691, 9;
+ ; End of false expr.
+    %blend  45, 80, 35; Condition unknown.
+    %jmp  T_5.692;
+T_5.691 ;
+    %mov 45, 80, 35; Return false value
+T_5.692 ;
+    %jmp/1  T_5.687, 8;
+T_5.685 ; End of true expr.
+    %jmp/0  T_5.686, 8;
+ ; End of false expr.
+    %blend  45, 0, 35; Condition unknown.
+    %jmp  T_5.687;
+T_5.686 ;
+    %mov 45, 0, 35; Return false value
+T_5.687 ;
+    %add 10, 45, 35;
+    %ix/load 1, 2, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.702, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.703;
+T_5.702 ;
+    %mov 8, 2, 1;
+T_5.703 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.699, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 45, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.707, 4;
+    %load/x1p 49, v0x12735a0_0, 4;
+    %jmp T_5.708;
+T_5.707 ;
+    %mov 49, 2, 4;
+T_5.708 ;
+; Save base=49 wid=4 in lookaside.
+    %cmp/u 45, 49, 4;
+    %mov 45, 4, 1;
+    %and 9, 45, 1;
+    %jmp/0  T_5.704, 9;
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.709, 4;
+    %load/x1p 80, v0x1273110_0, 8;
+    %jmp T_5.710;
+T_5.709 ;
+    %mov 80, 2, 8;
+T_5.710 ;
+    %mov 45, 80, 8; Move signal select into place
+    %mov 53, 0, 27;
+    %jmp/1  T_5.706, 9;
+T_5.704 ; End of true expr.
+    %ix/load 1, 16, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.711, 4;
+    %load/x1p 115, v0x11a3160_0, 8;
+    %jmp T_5.712;
+T_5.711 ;
+    %mov 115, 2, 8;
+T_5.712 ;
+    %mov 80, 115, 8; Move signal select into place
+    %mov 88, 0, 27;
+    %jmp/0  T_5.705, 9;
+ ; End of false expr.
+    %blend  45, 80, 35; Condition unknown.
+    %jmp  T_5.706;
+T_5.705 ;
+    %mov 45, 80, 35; Return false value
+T_5.706 ;
+    %jmp/1  T_5.701, 8;
+T_5.699 ; End of true expr.
+    %jmp/0  T_5.700, 8;
+ ; End of false expr.
+    %blend  45, 0, 35; Condition unknown.
+    %jmp  T_5.701;
+T_5.700 ;
+    %mov 45, 0, 35; Return false value
+T_5.701 ;
+    %add 10, 45, 35;
+    %ix/load 1, 3, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.716, 4;
+    %load/x1p 8, v0x1273290_0, 1;
+    %jmp T_5.717;
+T_5.716 ;
+    %mov 8, 2, 1;
+T_5.717 ;
+; Save base=8 wid=1 in lookaside.
+    %jmp/0  T_5.713, 8;
+    %load/v 9, v0x1273910_0, 1;
+    %load/v 45, v0x1272fc0_0, 4;
+    %ix/load 1, 4, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.721, 4;
+    %load/x1p 49, v0x12735a0_0, 4;
+    %jmp T_5.722;
+T_5.721 ;
+    %mov 49, 2, 4;
+T_5.722 ;
+; Save base=49 wid=4 in lookaside.
+    %cmp/u 45, 49, 4;
+    %mov 45, 4, 1;
+    %and 9, 45, 1;
+    %jmp/0  T_5.718, 9;
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.723, 4;
+    %load/x1p 80, v0x1273110_0, 8;
+    %jmp T_5.724;
+T_5.723 ;
+    %mov 80, 2, 8;
+T_5.724 ;
+    %mov 45, 80, 8; Move signal select into place
+    %mov 53, 0, 27;
+    %jmp/1  T_5.720, 9;
+T_5.718 ; End of true expr.
+    %ix/load 1, 24, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.725, 4;
+    %load/x1p 115, v0x11a3160_0, 8;
+    %jmp T_5.726;
+T_5.725 ;
+    %mov 115, 2, 8;
+T_5.726 ;
+    %mov 80, 115, 8; Move signal select into place
+    %mov 88, 0, 27;
+    %jmp/0  T_5.719, 9;
+ ; End of false expr.
+    %blend  45, 80, 35; Condition unknown.
+    %jmp  T_5.720;
+T_5.719 ;
+    %mov 45, 80, 35; Return false value
+T_5.720 ;
+    %jmp/1  T_5.715, 8;
+T_5.713 ; End of true expr.
+    %jmp/0  T_5.714, 8;
+ ; End of false expr.
+    %blend  45, 0, 35; Condition unknown.
+    %jmp  T_5.715;
+T_5.714 ;
+    %mov 45, 0, 35; Return false value
+T_5.715 ;
+    %add 10, 45, 35;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 10;
+    %jmp T_5.20;
+T_5.18 ;
+    %load/v 8, v0x11a3160_0, 8; Select 8 out of 32 bits
+    %ix/load 1, 7, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.727, 4;
+    %load/x1p 64, v0x11a3160_0, 1;
+    %jmp T_5.728;
+T_5.727 ;
+    %mov 64, 2, 1;
+T_5.728 ;
+    %mov 40, 64, 1; Move signal select into place
+    %mov 63, 40, 1; Repetition 24
+    %mov 62, 40, 1; Repetition 23
+    %mov 61, 40, 1; Repetition 22
+    %mov 60, 40, 1; Repetition 21
+    %mov 59, 40, 1; Repetition 20
+    %mov 58, 40, 1; Repetition 19
+    %mov 57, 40, 1; Repetition 18
+    %mov 56, 40, 1; Repetition 17
+    %mov 55, 40, 1; Repetition 16
+    %mov 54, 40, 1; Repetition 15
+    %mov 53, 40, 1; Repetition 14
+    %mov 52, 40, 1; Repetition 13
+    %mov 51, 40, 1; Repetition 12
+    %mov 50, 40, 1; Repetition 11
+    %mov 49, 40, 1; Repetition 10
+    %mov 48, 40, 1; Repetition 9
+    %mov 47, 40, 1; Repetition 8
+    %mov 46, 40, 1; Repetition 7
+    %mov 45, 40, 1; Repetition 6
+    %mov 44, 40, 1; Repetition 5
+    %mov 43, 40, 1; Repetition 4
+    %mov 42, 40, 1; Repetition 3
+    %mov 41, 40, 1; Repetition 2
+    %mov 16, 40, 24;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 8;
+    %load/v 8, v0x11a3160_0, 8; Select 8 out of 32 bits
+    %ix/load 1, 7, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.729, 4;
+    %load/x1p 64, v0x11a3160_0, 1;
+    %jmp T_5.730;
+T_5.729 ;
+    %mov 64, 2, 1;
+T_5.730 ;
+    %mov 40, 64, 1; Move signal select into place
+    %mov 63, 40, 1; Repetition 24
+    %mov 62, 40, 1; Repetition 23
+    %mov 61, 40, 1; Repetition 22
+    %mov 60, 40, 1; Repetition 21
+    %mov 59, 40, 1; Repetition 20
+    %mov 58, 40, 1; Repetition 19
+    %mov 57, 40, 1; Repetition 18
+    %mov 56, 40, 1; Repetition 17
+    %mov 55, 40, 1; Repetition 16
+    %mov 54, 40, 1; Repetition 15
+    %mov 53, 40, 1; Repetition 14
+    %mov 52, 40, 1; Repetition 13
+    %mov 51, 40, 1; Repetition 12
+    %mov 50, 40, 1; Repetition 11
+    %mov 49, 40, 1; Repetition 10
+    %mov 48, 40, 1; Repetition 9
+    %mov 47, 40, 1; Repetition 8
+    %mov 46, 40, 1; Repetition 7
+    %mov 45, 40, 1; Repetition 6
+    %mov 44, 40, 1; Repetition 5
+    %mov 43, 40, 1; Repetition 4
+    %mov 42, 40, 1; Repetition 3
+    %mov 41, 40, 1; Repetition 2
+    %mov 16, 40, 24;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 8;
+    %jmp T_5.20;
+T_5.19 ;
+    %load/v 8, v0x12735a0_0, 8; Select 8 out of 16 bits
+    %load/v 40, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.734, 4;
+    %load/x1p 45, v0x12735a0_0, 4;
+    %jmp T_5.735;
+T_5.734 ;
+    %mov 45, 2, 4;
+T_5.735 ;
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 40, 41, 1;
+    %jmp/0  T_5.731, 40;
+    %load/v 41, v0x1273110_0, 24; Only need 24 of 32 bits
+; Save base=41 wid=24 in lookaside.
+    %jmp/1  T_5.733, 40;
+T_5.731 ; End of true expr.
+    %load/v 65, v0x1272e80_0, 24; Only need 24 of 32 bits
+; Save base=65 wid=24 in lookaside.
+    %jmp/0  T_5.732, 40;
+ ; End of false expr.
+    %blend  41, 65, 24; Condition unknown.
+    %jmp  T_5.733;
+T_5.732 ;
+    %mov 41, 65, 24; Return false value
+T_5.733 ;
+    %mov 16, 41, 24;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273070_0, 0, 8;
+    %load/v 8, v0x12735a0_0, 8; Select 8 out of 16 bits
+    %load/v 40, v0x1273910_0, 1;
+    %load/v 41, v0x1272fc0_0, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_5.739, 4;
+    %load/x1p 45, v0x12735a0_0, 4;
+    %jmp T_5.740;
+T_5.739 ;
+    %mov 45, 2, 4;
+T_5.740 ;
+; Save base=45 wid=4 in lookaside.
+    %cmp/u 41, 45, 4;
+    %mov 41, 4, 1;
+    %and 40, 41, 1;
+    %jmp/0  T_5.736, 40;
+    %load/v 41, v0x1273110_0, 24; Only need 24 of 32 bits
+; Save base=41 wid=24 in lookaside.
+    %jmp/1  T_5.738, 40;
+T_5.736 ; End of true expr.
+    %load/v 65, v0x1272e80_0, 24; Only need 24 of 32 bits
+; Save base=65 wid=24 in lookaside.
+    %jmp/0  T_5.737, 40;
+ ; End of false expr.
+    %blend  41, 65, 24; Condition unknown.
+    %jmp  T_5.738;
+T_5.737 ;
+    %mov 41, 65, 24; Return false value
+T_5.738 ;
+    %mov 16, 41, 24;
+    %ix/load 0, 32, 0;
+    %assign/v0 v0x1273110_0, 0, 8;
+    %jmp T_5.20;
+T_5.20 ;
+    %jmp T_5.5;
+T_5.4 ;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273910_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1273750_0, 0, 0;
+T_5.5 ;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_0x11f4e40;
+T_6 ;
+    %wait E_0x11cde40;
+    %load/v 8, v0x12764c0_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x1276370_0, 0, 8;
+    %load/v 8, v0x1276220_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x12761a0_0, 0, 8;
+    %load/v 8, v0x1276640_0, 16;
+    %ix/load 0, 16, 0;
+    %assign/v0 v0x12765c0_0, 0, 8;
+    %jmp T_6;
+    .thread T_6;
+    .scope S_0x1233430;
+T_7 ;
+    %vpi_call 2 468 "$dumpfile", "dumpfile.vcd";
+    %vpi_call 2 469 "$dumpvars", 1'sb0, S_0x11f4e40;
+    %set/v v0x1276d00_0, 0, 1;
+    %set/v v0x12771e0_0, 0, 1;
+    %delay 1, 0;
+    %set/v v0x12771e0_0, 1, 1;
+    %end;
+    .thread T_7;
+    .scope S_0x1233430;
+T_8 ;
+    %vpi_call 2 476 "$display", "%d\011%h\011%h\011%h\011%h\011%h\011%h\011%h\011%h\011%h\011%h\011%h\011%h\011%h", v0x1277160_0, v0x1277060_0, v0x12770e0_0, v0x1276fe0_0, v0x12772f0_0, v0x1277370_0, v0x1277440_0, v0x1277510_0, v0x12775e0_0, v0x12776b0_0, v0x1277780_0, v0x1277850_0, v0x12779a0_0, v0x1277a70_0;
+    %delay 10, 0;
+    %load/v 8, v0x1276d00_0, 1;
+    %inv 8, 1;
+    %set/v v0x1276d00_0, 8, 1;
+    %load/v 8, v0x1276fe0_0, 1;
+    %jmp/0xz  T_8.0, 8;
+    %vpi_call 2 479 "$finish";
+T_8.0 ;
+    %jmp T_8;
+    .thread T_8;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "oldProject.v";

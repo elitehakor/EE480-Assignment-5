@@ -1,0 +1,528 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>The Aggregate: AIK Assembler Interpreter from Kentucky</title>
+<script>try {  for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){    var lastpass_f = document.forms[lastpass_iter];    if(typeof(lastpass_f.lpsubmitorig)=="undefined"){      if (typeof(lastpass_f.submit) == "function") {        lastpass_f.lpsubmitorig = lastpass_f.submit;        lastpass_f.submit = function(){          var form = this;          try {            if (document.documentElement && 'createEvent' in document)            {              var forms = document.getElementsByTagName('form');              for (var i=0 ; i<forms.length ; ++i)                if (forms[i]==form)                {                  var element = document.createElement('lpformsubmitdataelement');                  element.setAttribute('formnum',i);                  element.setAttribute('from','submithook');                  document.documentElement.appendChild(element);                  var evt = document.createEvent('Events');                  evt.initEvent('lpformsubmit',true,false);                  element.dispatchEvent(evt);                  break;                }            }          } catch (e) {}          try {            form.lpsubmitorig();          } catch (e) {}        }      }    }  }} catch (e) {}</script></head>
+<body>
+<h1>AIK Assembler Interpreter from Kentucky</h1>
+<form method="POST" action="/cgi-bin/aik.cgi">
+<input name="haveinput" value="1" type="hidden">
+<p>
+
+AIK implements an assembler for the instruction set of your choice
+by interpretively executing a set of specifications as described at
+<a href="http://aggregate.org/AIK/"><tt>http://aggregate.org/AIK/</tt></a>.
+</p><p>
+</p><h2>Your AIK 20070512 Specification</h2>
+<br>
+<textarea name="sinput" rows="33" cols="80">nop			:=	0:16
+.dst	$.d, $.s, $.t	:=	.this:4	.d:4	.s:4	.t:4
+.alias	.dst 0 and or xor 4 add addv 7 shift
+pack	$.d[.p], $.s	:=	0x8:4	.d:4	.s:4	.p:4
+unpack	$.d, $.s[.p]	:=	0x9:4	.d:4	.s:4	.p:4
+.di	$.d, .i		:=	.this:4	.d:4	.i:8
+.alias	.di 0xa li morei
+.ds	$.d, $.s	:=	0xe:4	.d:4	.s:4	.this:4
+.alias	.ds 0 ld 2 any anyv neg negv
+.st	$.s, $.t	:=	0xf:4	.this:4	.s:4	.t:4
+.alias	.st 0 st 2 jz jnz
+sys			:=	-1:16
+.const	zero pc sp fp ra rv u0 u1 u2 u3 u4 u5 u6 u7 u8 u9
+.segment .text 16 0x10000 0 .VMEM
+.segment .data 32 0x10000 0 .VMEM
+.const 0 .lowfirst
+
+li32	$.d, .i	?(((.i&amp;0xffffff80)==0xffffff80)||((.i&amp;0xffffff80)==0)) := {
+	li:4	.d:4	.i:8 }
+li32	$.d, .i	?(((.i&amp;0xffff8000)==0xffff8000)||((.i&amp;0xffff8000)==0)) := {
+	li:4	.d:4	(.i&gt;&gt;8):8
+	morei:4	.d:4	.i:8 }
+li32	$.d, .i ?(((.i&amp;0xff800000)==0xff800000)||((.i&amp;0xff800000)==0)) := {
+	li:4	.d:4	(.i&gt;&gt;16):8
+	morei:4	.d:4	(.i&gt;&gt;8):8
+	morei:4	.d:4	.i:8 }
+li32	$.d, .i	:= {
+	li:4	.d:4	(.i&gt;&gt;24):8
+	morei:4	.d:4	(.i&gt;&gt;16):8
+	morei:4	.d:4	(.i&gt;&gt;8):8
+	morei:4	.d:4	.i:8 }
+</textarea>
+<p>
+</p><h2>Your Assembly Language Input</h2>
+<br>
+<textarea name="iinput" rows="183" cols="80">.data
+test:
+    .word 0x601
+    .text
+parallel_0:
+    xor    $u3, $u0, $u1
+    st     $u9, $u4
+    ld     $u0, $u4
+    and    $u3, $u0, $u2
+    st     $u1, $u5
+    and    $u3, $u0, $u1
+    st     $u1, $u5
+xorok:
+    li32    $u5, 0x11111111
+    li32    $u0, 0x66666666
+    li32    $u1, 0x33333333
+    xor    $u3, $u0, $u1
+    li32    $u4, 0x55555555
+    li32    $u6, jzok
+    xor     $u5, $u4, $u3
+    jz    $u5, $u6
+    sys
+jzok:
+    li32    $u0, addok
+    jz    $zero, $u0
+    sys
+addok:
+    li32    $u8, 0x66666666
+    li32    $u9, 0x33333333
+    add    $u7, $u8, $u9
+    li32    $u0, 0x99999999
+    li32    $u1, negliok
+    xor    $u4, $u0, $u7
+    jz    $u4, $u1
+    sys
+negliok:
+    li32    $u0, -2
+    li32    $u1, 2
+    li32    $u2, jnzok
+    add    $u3, $u0, $u1
+    jz    $u3, $u2
+    sys
+jnzok:
+    li32    $u4, negok
+    jnz    $u1, $u4
+    sys
+negok:
+    neg    $u3, $u0
+    xor    $u4, $u3, $u1
+    li32    $u5, andok
+    jz    $u4, $u5
+    sys
+andok:
+    li32    $u0, 0x66666666
+    li32    $u1, 0x33333333
+    li32    $u2, 0x22222222
+    and    $u3, $u0, $u1
+    xor    $u4, $u3, $u2
+    li32    $u5, anyok
+    jz    $u4, $u5
+    sys
+anyok:
+    li32    $u0, 0
+    li32    $u1, 1
+    any    $u2, $u1
+    li32    $u3, anyfail
+    jz    $u2, $u3     ;never taken
+    any    $u2, $u0
+    li32    $u3, nopok
+    jz    $u2, $u3
+anyfail:
+    sys
+
+
+nopok:
+    nop ;assume if no crash nop worked
+parallel_1:
+    xor    $u3, $u0, $u1
+    st     $u9, $u4
+    and    $u3, $u0, $u2
+    st     $u1, $u5
+    and    $u3, $u0, $u1
+    st     $u1, $u5
+orok:
+    li32    $u0, 0x66666666
+    li32    $u1, 0x33333333
+    li32    $u3, 0x77777777
+    or    $u4, $u0, $u1
+    li32    $u5, ldstok
+    xor    $u6, $u4, $u3
+    jz    $u6, $u5
+    sys
+ldstok:
+    li32    $u0, test
+    li32    $u1, 0x17171717
+    st    $u1, $u0
+    ld    $u2, $u0
+    xor    $u3, $u2, $u1
+    li32    $u4, shiftok
+    jz    $u3, $u4
+    sys
+shiftok:
+    li32    $u0, 0x11111111
+    li32    $u1, 3
+    li32    $u2, 0x88888888
+    shift    $u3, $u0, $u1
+    xor    $u4, $u3, $u2
+    li32    $u5, shiftfail
+    jnz    $u4, $u5       ;not taken
+    li32    $u1, -3
+    shift    $u3, $u2, $u1
+    li32    $u0, 0xf1111111
+    li32    $u6, addvok
+    xor    $u4, $u3, $u0
+    jnz    $u4, $u5      ;not taken
+    li32    $u0, 0x77777777
+    li32    $u1, -1
+    shift    $u7, $u0, $u1
+    li32    $u8, 0x3bbbbbbb
+    xor    $u9, $u8, $u7
+    jz    $u9, $u6
+shiftfail:
+    sys
+
+
+addvok:
+    li32    $u0, 0xc0c0c0c0
+    li32    $u1, 0x50505050
+    li32    $u2, 0x10101010
+    addv    $u5, $u0, $u1
+    xor    $u3, $u5, $u2
+    li32    $u4, anyvok
+    jz    $u3, $u4
+    sys
+anyvok:
+    li32    $u0, 0x0001ff07
+    li32    $u1, 0x00010101
+    anyv    $u2, $u0
+    xor    $u3, $u2, $u1
+    li32    $u4, negvok
+    jz    $u3, $u4
+    sys
+negvok:
+    li32    $u0, 0xf0810700
+    li32    $u1, 0x107ff900
+    negv    $u2, $u0
+    li32    $u3, packok
+    xor    $u4, $u1, $u2
+    jz    $u4, $u3
+    sys
+packok:
+    li32    $u0, 0x01020387
+    li32    $u1, 0x00000000
+    li32    $u2, 0x00000000
+    li32    $u4, 0x87878787
+    pack    $u3[0b1111], $u0
+    xor    $u5, $u3, $u4
+    li32    $u6, packfail
+    jnz    $u5, $u6        ;not taken
+    pack    $u2[0b0000], $u0
+    li32    $u6, unpackok
+    jz    $u2, $u6
+packfail:
+    sys
+unpackok:
+    li32    $u0, 0x01010101
+    unpack    $u1, $u0[0b1111]
+    li32    $u2, 4
+    xor    $u3, $u1, $u2
+    li32    $u4, unpackfail    
+    jnz    $u3, $u4       ;not taken
+    unpack    $u5, $u0[0b0000]
+    li32    $u4, good
+    jz    $u5, $u4
+unpackfail:
+    sys
+good:
+    sys ;should end here if everything worked
+fail:
+    li32    $u0, 0xffffffff ;should not execute if sys works
+    sys
+</textarea>
+<p>
+<input value="Interpretively Assemble" type="SUBMIT">
+</p></form>
+<p>
+</p><hr>
+<p>
+</p><h2>Specification Parsing Messages</h2>
+<p>
+</p><pre></pre>
+<p>
+</p><h2>Assembly Code Parsing Messages</h2>
+<p>
+</p><pre></pre>
+<p>
+</p><h2>Multi-Pass Analysis Messages</h2>
+<p>
+</p><pre></pre>
+<p>
+</p><h2>Assembly Completed In 3 Passes</h2>
+<p>
+</p><hr>
+<p>
+</p><h2>Generated <tt>.text</tt> Segment</h2>
+<p>
+</p><pre>//generated by AIK version 20070512
+@0000
+2967
+f0fa
+e6a0
+0968
+f07b
+0967
+f07b
+ab11
+bb11
+bb11
+bb11
+a666
+b666
+b666
+b666
+a733
+b733
+b733
+b733
+2967
+aa55
+ba55
+ba55
+ba55
+ac1c
+2ba9
+f2bc
+ffff
+a61f
+f206
+ffff
+ae66
+be66
+be66
+be66
+af33
+bf33
+bf33
+bf33
+4def
+a699
+b699
+b699
+b699
+a730
+2a6d
+f2a7
+ffff
+a6fe
+a702
+a836
+4967
+f298
+ffff
+aa39
+f37a
+ffff
+e964
+2a97
+ab3e
+f2ab
+ffff
+a666
+b666
+b666
+b666
+a733
+b733
+b733
+b733
+a822
+b822
+b822
+b822
+0967
+2a98
+ab4f
+f2ab
+ffff
+a600
+a701
+e872
+a957
+f289
+e862
+a958
+f289
+ffff
+0000
+2967
+f0fa
+0968
+f07b
+0967
+f07b
+a666
+b666
+b666
+b666
+a733
+b733
+b733
+b733
+a977
+b977
+b977
+b977
+1a67
+ab70
+2ca9
+f2cb
+ffff
+a600
+a717
+b717
+b717
+b717
+f076
+e860
+2987
+aa7b
+f29a
+ffff
+a611
+b611
+b611
+b611
+a703
+a888
+b888
+b888
+b888
+7967
+2a98
+ab00
+bb9f
+f3ab
+a7fd
+7987
+a6f1
+b611
+b611
+b611
+ac00
+bca0
+2a96
+f3ab
+a677
+b677
+b677
+b677
+a7ff
+7d67
+ae3b
+bebb
+bebb
+bebb
+2fed
+f2fc
+ffff
+a6c0
+b6c0
+b6c0
+b6c0
+a750
+b750
+b750
+b750
+a810
+b810
+b810
+b810
+5b67
+29b8
+aa00
+bab2
+f29a
+ffff
+a601
+b6ff
+b607
+a701
+b701
+b701
+e863
+2987
+aa00
+babe
+f29a
+ffff
+a6f0
+b681
+b607
+b600
+a710
+b77f
+b7f9
+b700
+e865
+a900
+b9cc
+2a78
+f2a9
+ffff
+a601
+b602
+b603
+b687
+a700
+a800
+aa87
+ba87
+ba87
+ba87
+896f
+2b9a
+ac00
+bcdf
+f3bc
+8860
+ac00
+bce0
+f28c
+ffff
+a601
+b601
+b601
+b601
+976f
+a804
+2978
+aa00
+baee
+f39a
+9b60
+aa00
+baef
+f2ba
+ffff
+ffff
+a6ff
+ffff
+//end
+
+</pre>
+<p>
+</p><h2>Generated <tt>.data</tt> Segment</h2>
+<p>
+</p><pre>//generated by AIK version 20070512
+@0000
+00000601
+//end
+
+</pre>
+<p>
+</p><hr>
+<p>
+The C program that generated this page was written by
+<a href="http://aggregate.org/hankd/">Hank Dietz</a>
+using Antlr version 1.33MR33 to construct the parser and
+using the <a href="http://www.boutell.com/cgic/">CGIC</a>
+library to implement the CGI interface.
+</p><p>
+</p><hr>
+<p>
+<a href="http://aggregate.org/"><img src="testcode_files/talogos.jpg" alt="The Aggregate." width="160" height="32"></a> The <em>only</em> thing set in stone is our name.
+
+
+</p></body></html>
