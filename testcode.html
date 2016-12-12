@@ -49,7 +49,7 @@ li32	$.d, .i	:= {
 <p>
 </p><h2>Your Assembly Language Input</h2>
 <br>
-<textarea name="iinput" rows="183" cols="80">.data
+<textarea name="iinput" rows="184" cols="80">.data
 test:
     .word 0x601
     .text
@@ -57,6 +57,7 @@ parallel_0:
     xor    $u3, $u0, $u1
     st     $u9, $u4
     ld     $u0, $u4
+    nop
     and    $u3, $u0, $u2
     st     $u1, $u5
     and    $u3, $u0, $u1
@@ -260,6 +261,7 @@ fail:
 2967
 f0fa
 e6a0
+0000
 0968
 f07b
 0967
@@ -281,11 +283,11 @@ aa55
 ba55
 ba55
 ba55
-ac1c
+ac1d
 2ba9
 f2bc
 ffff
-a61f
+a620
 f206
 ffff
 ae66
@@ -301,22 +303,22 @@ a699
 b699
 b699
 b699
-a730
+a731
 2a6d
 f2a7
 ffff
 a6fe
 a702
-a836
+a837
 4967
 f298
 ffff
-aa39
+aa3a
 f37a
 ffff
 e964
 2a97
-ab3e
+ab3f
 f2ab
 ffff
 a666
@@ -333,16 +335,16 @@ b822
 b822
 0967
 2a98
-ab4f
+ab50
 f2ab
 ffff
 a600
 a701
 e872
-a957
+a958
 f289
 e862
-a958
+a959
 f289
 ffff
 0000
@@ -365,7 +367,7 @@ b977
 b977
 b977
 1a67
-ab70
+ab71
 2ca9
 f2cb
 ffff
@@ -377,7 +379,7 @@ b717
 f076
 e860
 2987
-aa7b
+aa7c
 f29a
 ffff
 a611
@@ -392,7 +394,7 @@ b888
 7967
 2a98
 ab00
-bb9f
+bba0
 f3ab
 a7fd
 7987
@@ -401,7 +403,7 @@ b611
 b611
 b611
 ac00
-bca0
+bca1
 2a96
 f3ab
 a677
@@ -432,7 +434,7 @@ b810
 5b67
 29b8
 aa00
-bab2
+bab3
 f29a
 ffff
 a601
@@ -444,7 +446,7 @@ b701
 e863
 2987
 aa00
-babe
+babf
 f29a
 ffff
 a6f0
@@ -457,7 +459,7 @@ b7f9
 b700
 e865
 a900
-b9cc
+b9cd
 2a78
 f2a9
 ffff
@@ -474,11 +476,11 @@ ba87
 896f
 2b9a
 ac00
-bcdf
+bce0
 f3bc
 8860
 ac00
-bce0
+bce1
 f28c
 ffff
 a601
@@ -489,11 +491,11 @@ b601
 a804
 2978
 aa00
-baee
+baef
 f39a
 9b60
 aa00
-baef
+baf0
 f2ba
 ffff
 ffff

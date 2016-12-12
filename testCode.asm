@@ -4,8 +4,9 @@ test:
     .text
 parallel_0:
     xor    $u3, $u0, $u1
-    st     $u9, $u4
+    st     $u4, $u9
     ld     $u0, $u4
+    nop
     and    $u3, $u0, $u2
     st     $u1, $u5
     and    $u3, $u0, $u1

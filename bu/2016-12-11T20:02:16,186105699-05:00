@@ -363,7 +363,7 @@ always @(posedge clk) begin
 
 
    always @(posedge clk) begin
-     $display("ir=%x buffered mem[%x]=%x to reg %x en=%x ALU_source1=%x ALUout_buff=%x we=%x", ir_in2, parallel_addr_buf,parallel_val_buf, D, parallel_store_en_buf, ALU_source1, ALUout_buff, write_en );
+     // $display("buffered mem[%x]=%x to reg %x en=%x ALU_source1=%x ALUout_buff=%x we=%x", parallel_addr_buf,parallel_val_buf, D, parallel_store_en_buf, ALU_source1, ALUout_buff, write_en );
      /* Note code that looks like ( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff[7:0] : ALU_source1[7:0] ) 
      is checking to see if what the ALU just sent back to the register file is one of the arguments to the instruction
        it is evaluating. If the ALU just sent something to the register file to be stored then it could not possibly have
@@ -380,26 +380,30 @@ always @(posedge clk) begin
       ALUdest_buff <= D;
       ALUdest <= D;
 
+      parallel_store_en_buf <= parallel_store_en;
+      parallel_addr_buf     <= parallel_addr;
+      parallel_val_buf      <= parallel_val;    
+
       if (jump_taken == 0) begin
 
         if (parallel_store_en == 1'b1) begin
-          $display("Setting %x to val %x", parallel_addr, parallel_val);
-          datamem[parallel_addr] <= parallel_val;
+          //$display("Setting %x to val %x", parallel_addr, parallel_val);
+          datamem[parallel_addr] = parallel_val;
         end
         case (ir_in2 `Opcode)
           `OPldanne:
             case (ir_in2 `Arg2)	      // use Arg2 as extended opcode
               `Arg2ld: begin  //ld
-              if( parallel_store_en_buf == 1'b1 && parallel_addr_buf == ALU_source1[3:0] ) begin
-                $display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
-                  ALUout <= parallel_val_buf;
-                  ALUout_buff <= parallel_val_buf;
-                end else begin
-                $display("Loading mem[%x]=%x to reg %x", ALU_source1,datamem[ALU_source1], D );
+                //if( parallel_store_en_buf == 1'b1 && parallel_addr_buf == ((write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )) begin
+                //$display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
+                //  ALUout <= parallel_val_buf;
+                //  ALUout_buff <= parallel_val_buf;
+                //end else begin
+                //$display("Loading mem[%x]=%x to reg %x", ALU_source1,datamem[ALU_source1], D );
                   ALUout <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )];
                   ALUout_buff <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )]; 
                 end
-              end 
+              //end 
               `Arg2any: begin   //any
               ALUout <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 ); 
               ALUout_buff <= |( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 );
@@ -547,10 +551,6 @@ always @(posedge clk) begin
              write_en <= 0; jump_taken <= 0; 
 
            end
-           parallel_store_en_buf <= parallel_store_en;
-           parallel_addr_buf     <= parallel_addr;
-           parallel_val_buf      <= parallel_val;    
-
          end
 
 
