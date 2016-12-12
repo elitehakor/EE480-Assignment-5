@@ -211,6 +211,7 @@ always @(posedge clk) begin
 
       $display("------------OUT OF ORDER--------");
     end else begin
+    oo_execuction <= 2'h0;
     parallel_store_en <= 1'b0;
     ir <= ( (jump_taken) ? ( (jump_addr % 2 != 0)      ? ir32 `low_instruction  : ir32 `high_instruction ) :
                            ( (high_or_low_instruction) ? ir32 `high_instruction : ir32 `low_instruction  ) );
