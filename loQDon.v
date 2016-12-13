@@ -188,7 +188,9 @@ always @(posedge clk) begin
                   ir64 `High_Dest   == `Destst    &&
                   ir64 `High_parallel_addr != ir64 `High_Dest_64 &&
                   ir64 `High_parallel_addr != ir64 `High_Arg2_64 &&
-                  ir64 `High_parallel_addr != ir64 `High_Arg1_64 
+                  ir64 `High_parallel_addr != ir64 `High_Arg1_64 &&
+                  ir64 `High_parallel_addr != ir64 `Dest_64 &&
+                  ir64 `High_parallel_val  != ir64 `Dest_64 
                 ) &&    
                 ( 
                   ir64 `Opcode == `OPstjzsys &&
@@ -289,15 +291,15 @@ always @(posedge clk) begin
  u9 <= regfile[15];
 
  parallel_store_mon <= parallel_store_en_in;
- parallel_val_mon   <= regfile[parallel_val_reg_in ];
- parallel_addr_mon  <= regfile[parallel_addr_reg_in];
+ parallel_addr_mon  <= ( (write_en && (ALUdest == parallel_addr_reg_in))  ? ALU_in : regfile[parallel_addr_reg_in ] );
+ parallel_val_mon   <= ( (write_en && (ALUdest == parallel_val_reg_in)) ? ALU_in : regfile[parallel_val_reg_in] );
 
  // Pass along parallel store information from the
  // corresponding registers
- //parallel_addr_out <= ( (write_en && (ALUdest == parallel_addr_reg_in)) ? ALU_in : regfile[ir_in `Arg1] );regfile[parallel_val_reg_in ];
- //parallel_val_out  <= ( (write_en && (ALUdest == parallel_val_reg_in)) ? ALU_in : regfile[ir_in `Arg1] );regfile[parallel_val_reg_in ];
- parallel_addr_out <=  regfile[parallel_addr_reg_in];
- parallel_val_out  <=  regfile[parallel_val_reg_in];
+ parallel_addr_out <= ( (write_en && (ALUdest == parallel_addr_reg_in)) ? ALU_in : regfile[parallel_addr_reg_in] );
+ parallel_val_out  <= ( (write_en && (ALUdest == parallel_val_reg_in))  ? ALU_in : regfile[parallel_val_reg_in ] );
+ // parallel_addr_out <=  regfile[parallel_addr_reg_in];
+ // parallel_val_out  <=  regfile[parallel_val_reg_in];
 
  ir_in2 <= ir_in;
 
@@ -425,7 +427,7 @@ always @(posedge clk) begin
       if (jump_taken == 0) begin
 
         if (parallel_store_en == 1'b1) begin
-          //$display("Setting %x to val %x", parallel_addr, parallel_val);
+          $display("Setting %x to val %x", parallel_addr, parallel_val);
           datamem[parallel_addr] <= parallel_val;
         end
         case (ir_in2 `Opcode)
@@ -433,11 +435,11 @@ always @(posedge clk) begin
             case (ir_in2 `Arg2)	      // use Arg2 as extended opcode
               `Arg2ld: begin  //ld
               if( parallel_store_en_buf == 1'b1 && parallel_addr_buf == ALU_source1 ) begin
-                //$display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
+                $display("Loading buffered mem[%x]=%x to reg %x", parallel_addr_buf,parallel_val_buf, D );
                   ALUout <= parallel_val_buf;
                   ALUout_buff <= parallel_val_buf;
                 end else begin
-                //$display("Loading mem[%x]=%x to reg %x", ALU_source1,datamem[ALU_source1], D );
+                $display("Loading mem[%x]=%x to reg %x", ALU_source1,datamem[ALU_source1], D );
                   ALUout <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )];
                   ALUout_buff <= datamem[( (write_en && (ALUdest_buff == ir_in2 `Arg1)) ? ALUout_buff : ALU_source1 )]; 
                 end

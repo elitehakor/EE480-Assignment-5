@@ -2,26 +2,38 @@
 test:
     .word 0x601
     .text
+    nop
+    nop
 parallel_0:
     xor    $u3, $u0, $u1
     st     $u4, $u9
-    ld     $u0, $u4
-    li     $u3, 0xe
+    ld     $u0, $u9
+    li     $u3, 0x9
     li32    $u6, out_of_order_ok
     xor     $u5, $u0, $u3
     jz    $u5, $u6
     sys
 out_of_order_ok:
+    nop
+    li     $u0, 0x2
     li     $u1, 0x1
     li     $u2, 0x2
     li     $u3, 0x3
     li     $u4, 0x4
+    nop
+    nop
     xor    $u2, $u0, $u1
-    xor    $u3, $u0, $u1
-    st     $u5, $u8
-    st     $u4, $u9
-    and    $u3, $u0, $u1
-    st     $u1, $u5
+    xor    $u5, $u2, $u4
+    st     $u4, $u3
+    st     $u0, $u1
+    ld     $u4, $u3
+    ld     $u2, $u1
+    add    $u3, $u2, $u4
+    li     $u2, 6
+    li32    $u6, xorok
+    xor     $u5, $u2, $u3
+    jz    $u5, $u6
+    sys
 xorok:
     li32    $u5, 0x11111111
     li32    $u0, 0x66666666
