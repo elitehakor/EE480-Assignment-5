@@ -149,11 +149,10 @@ always @(posedge clk) begin
                   ir32 `High_Opcode == `OPaddv    ||
                   ir32 `High_Opcode == `OPshift
                 ) &&
-                  ir32 `Opcode == `OPstjzsys &&
-                  ir32 `Dest   == `Destst    &&
-                  ir32 `parallel_addr != ir32 `High_Dest &&
-                  ir32 `parallel_addr != ir32 `High_Arg2 &&
-                  ir32 `parallel_addr != ir32 `High_Arg1 
+                ir32 `Opcode == `OPstjzsys             &&
+                ir32 `Dest   == `Destst                &&
+                ir32 `parallel_val  != ir32 `High_Dest &&
+                ir32 `parallel_addr != ir32 `High_Dest
   ) begin
     // Here, there is a simple ALU op and then a store.
     // Send the store on with the ALU op
@@ -183,22 +182,16 @@ always @(posedge clk) begin
                   ir64 `Opcode_64 == `OPaddv    ||
                   ir64 `Opcode_64 == `OPshift
                 ) &&
-                (
-                  ir64 `High_Opcode == `OPstjzsys &&
-                  ir64 `High_Dest   == `Destst    &&
-                  ir64 `High_parallel_addr != ir64 `High_Dest_64 &&
-                  ir64 `High_parallel_addr != ir64 `High_Arg2_64 &&
-                  ir64 `High_parallel_addr != ir64 `High_Arg1_64 &&
-                  ir64 `High_parallel_addr != ir64 `Dest_64 &&
-                  ir64 `High_parallel_val  != ir64 `Dest_64 
-                ) &&    
-                ( 
-                  ir64 `Opcode == `OPstjzsys &&
-                  ir64 `Dest   == `Destst    &&
-                  ir64 `parallel_addr != ir64 `Dest_64 &&
-                  ir64 `parallel_addr != ir64 `Arg2_64 &&
-                  ir64 `parallel_addr != ir64 `Arg1_64 
-                )
+                ir64 `High_Opcode == `OPstjzsys                &&
+                ir64 `High_Dest   == `Destst                   &&
+                ir64 `High_parallel_val  != ir64 `High_Dest_64 &&
+                ir64 `High_parallel_addr != ir64 `High_Dest_64 &&
+                ir64 `High_parallel_val  != ir64 `Dest_64      &&
+                ir64 `High_parallel_addr != ir64 `Dest_64      &&
+                ir64 `Opcode             == `OPstjzsys         &&
+                ir64 `Dest               == `Destst            &&
+                ir64 `parallel_val       != ir64 `Dest_64      &&
+                ir64 `parallel_addr      != ir64 `Dest_64
   ) begin
     // Here, there are two simple ALU operations and then two stores.
     // Execute the first ALU and store in parallel, storing the other pair
